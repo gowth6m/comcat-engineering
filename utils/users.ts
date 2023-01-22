@@ -2,18 +2,19 @@ import { db } from "./firebase";
 import { collection, getDocs, doc } from "firebase/firestore";
 
 const getUsers = async () => {
-    // const userDoc = await firestore
-    //     .collection("users")
-    //     .where("username", "==", username)
-    //     .get();
+    const users = await getDocs(collection(db, "users"));
 
-    const snapshot = await getDocs(collection(db, "users"));
-
-    snapshot.docs.forEach(element => {
-        console.log(element);
+    users.docs.map((doc) => {
+        console.log(doc.id, "=>", doc.data());
     });
-
-    // return userDoc;
 }
 
-export { getUsers };
+const getProducts = async () => {
+    const products = await getDocs(collection(db, "products"));
+
+    products.docs.map((doc) => {
+        console.log(doc.id, "=>", doc.data());
+    });
+}
+
+export { getUsers, getProducts };

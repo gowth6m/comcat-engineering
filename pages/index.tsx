@@ -3,13 +3,14 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useEffect } from "react";
-import { getUsers } from "@/utils/users";
+import { getProducts, getUsers } from "@/utils/users";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   useEffect(() => {
     getUsers();
+    getProducts();
   }, []);
 
   return (
