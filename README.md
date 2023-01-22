@@ -18,3 +18,13 @@ To build
 ```
 npm run build
 ```
+
+To export (required before firebase deploy command)
+```
+npm run export
+```
+
+To deploy to Firebase
+```
+firebase deploy
+```
