@@ -25,16 +25,38 @@ export function IconMenu(
   return (
     <svg
       width={width ?? "26"}
-      height={height ?? "22"}
+      height={height ?? "24"}
+      strokeMiterlimit="10"
+      version="1.1"
       viewBox="0 0 16 12"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <path
-        d="M0 1C0 0.447715 0.447715 0 1 0H15C15.5523 0 16 0.447715 16 1C16 1.55228 15.5523 2 15 2H1C0.447715 2 0 1.55228 0 1ZM0 6C0 5.44772 0.447715 5 1 5H15C15.5523 5 16 5.44772 16 6C16 6.55228 15.5523 7 15 7H1C0.447715 7 0 6.55228 0 6ZM0 11C0 10.4477 0.447715 10 1 10H15C15.5523 10 16 10.4477 16 11C16 11.5523 15.5523 12 15 12H1C0.447715 12 0 11.5523 0 11Z"
-        fill={fill ?? "#0D0D0D"}
-      />
+      <defs />
+      <g id="Untitled">
+        <path
+          d="M1.25 0L8.75 0C9.44036 0 10 0.447715 10 1L10 1C10 1.55228 9.44036 2 8.75 2L1.25 2C0.559644 2 0 1.55228 0 1L0 1C0 0.447715 0.559644 0 1.25 0Z"
+          fill={fill ?? "#0D0D0D"}
+          fillRule="nonzero"
+          opacity="1"
+          stroke="none"
+        />
+        <path
+          d="M1 5L15 5C15.5523 5 16 5.44772 16 6L16 6C16 6.55228 15.5523 7 15 7L1 7C0.447715 7 0 6.55228 0 6L0 6C0 5.44772 0.447715 5 1 5Z"
+          fill={fill ?? "#0D0D0D"}
+          fillRule="nonzero"
+          opacity="1"
+          stroke="none"
+        />
+        <path
+          d="M7.25 9.99837L14.75 9.99837C15.4404 9.99837 16 10.4461 16 10.9984L16 10.9984C16 11.5507 15.4404 11.9984 14.75 11.9984L7.25 11.9984C6.55964 11.9984 6 11.5507 6 10.9984L6 10.9984C6 10.4461 6.55964 9.99837 7.25 9.99837Z"
+          fill={fill ?? "#0D0D0D"}
+          fillRule="nonzero"
+          opacity="1"
+          stroke="none"
+        />
+      </g>
+      <g id="Layer-1" />
     </svg>
   );
 }
