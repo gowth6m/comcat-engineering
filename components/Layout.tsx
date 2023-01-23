@@ -32,6 +32,7 @@ export default function Layout({ title, children }: LayoutProps) {
           <div>
             <Toaster />
           </div>
+          <div className="h-12"></div>
           {children}
         </main>
 

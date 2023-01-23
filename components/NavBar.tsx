@@ -3,10 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { IconCart, IconMenu, IconSearch, IconUser } from "./CustomIcons";
 import { motion } from "framer-motion";
+import { useAuthState } from "react-firebase-hooks/auth";
+import router from "next/router";
+import { getAuth } from "firebase/auth";
+import { initializeFirestore } from "firebase/firestore";
 
 export default function NavBar() {
   const [menuOpened, setMenuOpened] = useState(false);
   const [cartItemsCount, setCartItemsCount] = useState(1);
+  const auth = getAuth();
+  const [user, loading, error] = useAuthState(auth);
 
   const menuList = ["Home", "Categories", "My Account", "About", "Contact"];
   const currencyDropdown = ["GBP", "EUR", "USD", "CAD"];
@@ -23,7 +29,7 @@ export default function NavBar() {
                   open={true}
                   height="24px"
                   fill="white"
-                  className="ml-4"
+                  className="ml-4 cursor-pointer"
                   onClick={() => setMenuOpened(!menuOpened)}
                 />
               ) : (
@@ -31,7 +37,7 @@ export default function NavBar() {
                   open={false}
                   height="24px"
                   fill="white"
-                  className="ml-4"
+                  className="ml-4 cursor-pointer"
                   onClick={() => setMenuOpened(!menuOpened)}
                 />
               )}
@@ -144,15 +150,32 @@ export default function NavBar() {
               ))}
             </div>
 
-            <div className="flex align-middle justify-middle flex-col m-4">
-              <Link
-                href={""}
-                className="border-white border-solid border-2 p-4 flex flex-row justify-between rounded-xl"
-              >
-                <IconUser fill={"white"} />
-                <div>Login</div>
-              </Link>
-            </div>
+            {loading ? (
+              <div>Loading...</div>
+            ) : (
+              <div className="flex align-middle justify-middle flex-col m-4">
+                {user ? (
+                  <Link
+                    href={"/login"}
+                    className="border-white border-solid border-2 p-4 flex flex-row justify-between rounded-xl"
+                  >
+                    <IconUser fill={"white"} />
+                    <div>Login</div>
+                  </Link>
+                ) : (
+                  <div
+                    onClick={() => {
+                      auth.signOut();
+                      router.push("/");
+                    }}
+                    className="border-white border-solid border-2 p-4 flex flex-row justify-between rounded-xl cursor-pointer"
+                  >
+                    <IconUser fill={"white"} />
+                    <div>Logout</div>
+                  </div>
+                )}
+              </div>
+            )}
           </motion.div>
         )}
       </div>

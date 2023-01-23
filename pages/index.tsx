@@ -5,10 +5,12 @@ import Layout from "@/components/Layout";
 import "@splidejs/react-splide/css";
 import IntroGallery from "@/components/IntroGallery";
 import React from "react";
+import { initFirebase } from "@/utils/firebase";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  initFirebase();
   useEffect(() => {
     // getUsers();
     // getProducts();
@@ -24,7 +26,7 @@ export default function Home() {
       {/* Image Gallery Showcase */}
       <IntroGallery />
       <Layout title="GCE: Home">
-        <div className="mt-[3rem] md:mt-[6rem] w-full">
+        <div className="mt-[0rem] md:mt-[3rem] w-full">
           {/* Intro Products Showcase */}
           <div className="bg-[var(--white)] w-full flex flex-row gap-1 justify-center align-middle rounded-lg overflow-hidden">
             {introShowcaseCategory.map((category: any) => {
