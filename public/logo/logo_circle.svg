@@ -10,7 +10,7 @@
 <path d="M1 0L1023 0C1023.55 0 1024 0.447715 1024 1L1024 1023C1024 1023.55 1023.55 1024 1023 1024L1 1024C0.447715 1024-3.09132e-14 1023.55-3.09132e-14 1023L-3.09132e-14 1C-3.09132e-14 0.447715 0.447715 0 1 0Z" fill="#0f0f0f" fill-rule="nonzero" opacity="1" stroke="none"/>
 <path d="M1023.55 793.9L1023.55 793.9C1023.8 793.9 1024 794.101 1024 794.349L1024 794.484C1024 794.732 1023.8 794.933 1023.55 794.933L1023.55 794.933C1023.3 794.933 1023.1 794.732 1023.1 794.484L1023.1 794.349C1023.1 794.101 1023.3 793.9 1023.55 793.9Z" fill="#0f0f0f" fill-rule="nonzero" opacity="1" stroke="none"/>
 </g>
-<g id="Layer-3" vectornator:layerName="Layer 3" visibility="hidden">
+<g id="Layer-3" vectornator:layerName="Layer 3">
 <path d="M2 512C2 230.335 230.335 2 512 2C793.665 2 1022 230.335 1022 512C1022 793.665 793.665 1022 512 1022C230.335 1022 2 793.665 2 512Z" fill="#0f0f0f" fill-rule="nonzero" opacity="1" stroke="none"/>
 </g>
 <g id="Layer-1" vectornator:layerName="Layer 1">
