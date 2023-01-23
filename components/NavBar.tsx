@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { IconCart, IconMenu, IconSearch, IconUser } from "./CustomIcons";
+import { motion } from "framer-motion";
 
 export default function NavBar() {
   const [menuOpened, setMenuOpened] = useState(false);
@@ -20,7 +21,7 @@ export default function NavBar() {
               {menuOpened ? (
                 <IconMenu
                   open={true}
-                  height="22px"
+                  height="24px"
                   fill="white"
                   className="ml-4"
                   onClick={() => setMenuOpened(!menuOpened)}
@@ -28,7 +29,7 @@ export default function NavBar() {
               ) : (
                 <IconMenu
                   open={false}
-                  height="22px"
+                  height="24px"
                   fill="white"
                   className="ml-4"
                   onClick={() => setMenuOpened(!menuOpened)}
@@ -123,7 +124,46 @@ export default function NavBar() {
             ))}
           </div>
         </div>
+
+        {/* MOBILE NAV */}
+        {menuOpened && (
+          <motion.div
+            className="fixed top-12 w-[100vw] h-[100dvh] bg-[var(--black)] origin-top flex align-middle justify-middle flex-col"
+            variants={variants}
+            animate={menuOpened ? "transform" : "stop"}
+          >
+            <div className="flex align-middle justify-middle flex-col m-4">
+              {menuList.map((item, index) => (
+                <Link
+                  key={index}
+                  href={`/${item.toLowerCase()}`}
+                  className="p-2 hover:text-[var(--orange)] text-white"
+                >
+                  {item}
+                </Link>
+              ))}
+            </div>
+
+            <div className="flex align-middle justify-middle flex-col m-4">
+              <Link
+                href={""}
+                className="border-white border-solid border-2 p-2 flex flex-row justify-between"
+              >
+                <IconUser fill={"white"} />
+                <div>Login</div>
+              </Link>
+            </div>
+          </motion.div>
+        )}
       </div>
     </>
   );
 }
+
+const variants = {
+  transform: {
+    scaleY: [0, 1.2, 1],
+    scaleX: [1, 1, 1],
+    transition: { duration: 0.5 },
+  },
+};
