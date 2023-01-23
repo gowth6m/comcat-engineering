@@ -39,7 +39,7 @@ export default function NavBar() {
             {/* MD:OPTIONS */}
             <div className="hidden flex-1 justify-start md:flex">
               {/* SELECT COUNTRY */}
-              <select className="bg-[var(--black)] ml-2 text-[var(--orange)]">
+              <select className="bg-[var(--black)] ml-2 text-[var(--orange)] cursor-pointer">
                 {currencyDropdown.map((item, index) => (
                   <option key={index}>{item}</option>
                 ))}
@@ -81,7 +81,6 @@ export default function NavBar() {
                     // onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search for products"
                     className="w-full rounded-lg text-white px-2 py-1 text-center mr-1"
-                    autoFocus
                   />
                   <button type="submit" className="w-auto mx-2 cursor-pointer">
                     <IconSearch fill="white" />
@@ -92,7 +91,7 @@ export default function NavBar() {
               {/* PROFILE ICON */}
               <IconUser
                 fill={"white"}
-                className="hidden md:flex ml-2 cursor-pointer"
+                className="hidden md:flex cursor-pointer"
               />
 
               {/* CART ICON AND CART COUNT */}
