@@ -137,7 +137,7 @@ export default function NavBar() {
                 <Link
                   key={index}
                   href={`/${item.toLowerCase()}`}
-                  className="p-2 hover:text-[var(--orange)] text-white"
+                  className="p-4 hover:text-[var(--orange)] text-white"
                 >
                   {item}
                 </Link>
@@ -147,7 +147,7 @@ export default function NavBar() {
             <div className="flex align-middle justify-middle flex-col m-4">
               <Link
                 href={""}
-                className="border-white border-solid border-2 p-2 flex flex-row justify-between"
+                className="border-white border-solid border-2 p-4 flex flex-row justify-between rounded-xl"
               >
                 <IconUser fill={"white"} />
                 <div>Login</div>
