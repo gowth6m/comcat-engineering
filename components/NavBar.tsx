@@ -3,19 +3,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { IconCart, IconMenu, IconSearch, IconUser } from "./CustomIcons";
 import { motion } from "framer-motion";
-import { useAuthState } from "react-firebase-hooks/auth";
 import router from "next/router";
-import { getAuth } from "firebase/auth";
-import { initializeFirestore } from "firebase/firestore";
+import { signOut, useSession } from "next-auth/react";
 
 export default function NavBar() {
   const [menuOpened, setMenuOpened] = useState(false);
   const [cartItemsCount, setCartItemsCount] = useState(1);
-  const auth = getAuth();
-  const [user, loading, error] = useAuthState(auth);
-
   const menuList = ["Home", "Categories", "My Account", "About", "Contact"];
   const currencyDropdown = ["GBP", "EUR", "USD", "CAD"];
+  const { status, data: session }: any = useSession();
+
+  const logoutHandler = async () => {
+    signOut({
+      callbackUrl: "/login",
+    });
+  };
 
   return (
     <>
@@ -150,11 +152,11 @@ export default function NavBar() {
               ))}
             </div>
 
-            {loading ? (
+            {false ? (
               <div>Loading...</div>
             ) : (
               <div className="flex align-middle justify-middle flex-col m-4">
-                {user ? (
+                {!session?.user ? (
                   <Link
                     href={"/login"}
                     className="border-white border-solid border-2 p-4 flex flex-row justify-between rounded-xl"
@@ -165,8 +167,7 @@ export default function NavBar() {
                 ) : (
                   <div
                     onClick={() => {
-                      auth.signOut();
-                      router.push("/");
+                      logoutHandler();
                     }}
                     className="border-white border-solid border-2 p-4 flex flex-row justify-between rounded-xl cursor-pointer"
                   >

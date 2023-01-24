@@ -5,17 +5,10 @@ import Layout from "@/components/Layout";
 import "@splidejs/react-splide/css";
 import IntroGallery from "@/components/IntroGallery";
 import React from "react";
-import { initFirebase } from "@/utils/firebase";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  initFirebase();
-  useEffect(() => {
-    // getUsers();
-    // getProducts();
-  }, []);
-
   const [introShowcaseCurrent, setIntroShowcaseCurrent] =
     React.useState("Best Sellers");
 
