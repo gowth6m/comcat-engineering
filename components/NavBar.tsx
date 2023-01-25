@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { IconCart, IconMenu, IconSearch, IconUser } from "./CustomIcons";
+import {
+  IconCart,
+  IconLogin,
+  IconLogout,
+  IconMenu,
+  IconSearch,
+  IconUser,
+} from "./CustomIcons";
 import { motion } from "framer-motion";
 import router from "next/router";
 import { signOut, useSession } from "next-auth/react";
@@ -152,31 +159,43 @@ export default function NavBar() {
               ))}
             </div>
 
-            {false ? (
-              <div>Loading...</div>
-            ) : (
-              <div className="flex align-middle justify-middle flex-col m-4">
-                {!session?.user ? (
-                  <Link
-                    href={"/login"}
-                    className="border-white border-solid border-2 p-4 flex flex-row justify-between rounded-xl"
+            <div className="flex align-middle justify-middle flex-col m-4">
+              {!session?.user ? (
+                <Link
+                  href={"/login"}
+                  className="border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl"
+                >
+                  <IconLogin fill={"white"} />
+                  <div className="ml-6">Login</div>
+                </Link>
+              ) : (
+                <>
+                  <div
+                    onClick={() => {}}
+                    className="border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl cursor-pointer mb-4"
                   >
                     <IconUser fill={"white"} />
-                    <div>Login</div>
-                  </Link>
-                ) : (
+                    <div className="ml-6">Profile</div>
+                  </div>
+                  <div
+                    onClick={() => {}}
+                    className="border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl cursor-pointer mb-4"
+                  >
+                    <IconCart fill={"white"} />
+                    <div className="ml-6">Order History</div>
+                  </div>
                   <div
                     onClick={() => {
                       logoutHandler();
                     }}
-                    className="border-white border-solid border-2 p-4 flex flex-row justify-between rounded-xl cursor-pointer"
+                    className="border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl cursor-pointer"
                   >
-                    <IconUser fill={"white"} />
-                    <div>Logout</div>
+                    <IconLogout fill={"white"} />
+                    <div className="ml-6">Logout</div>
                   </div>
-                )}
-              </div>
-            )}
+                </>
+              )}
+            </div>
           </motion.div>
         )}
       </div>
@@ -186,7 +205,7 @@ export default function NavBar() {
 
 const variants = {
   transform: {
-    scaleY: [0, 1.2, 1],
+    scaleY: [0, 1.1, 1],
     scaleX: [1, 1, 1],
     transition: { duration: 0.5 },
   },

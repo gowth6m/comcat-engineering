@@ -19,7 +19,7 @@ export default function Home() {
       {/* Image Gallery Showcase */}
       <IntroGallery />
       <Layout title="GCE: Home">
-        <div className="mt-[0rem] md:mt-[3rem] w-full">
+        <div className="w-full">
           {/* Intro Products Showcase */}
           <div className="bg-[var(--white)] w-full flex flex-row gap-1 justify-center align-middle rounded-lg overflow-hidden">
             {introShowcaseCategory.map((category: any) => {

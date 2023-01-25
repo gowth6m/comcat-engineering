@@ -51,13 +51,16 @@ export default function LoginScreen() {
       {loggingIn ? <Loading /> : <div></div>}
       <form
         action=""
-        className="mx-auto max-w-screen-md"
+        className="mx-auto max-w-screen-sm mt-8"
         onSubmit={handleSubmit(submitHandler)}
       >
-        <h1 className="mb-4 text-xl">Login</h1>
-        <div className="mb-4">
+        <div className="heading1">
+          Login
+        </div>
+        <div className="mb-4 text-[var(--black)]">
           <label htmlFor="email">Email</label>
           <input
+            placeholder="Enter your email"
             type="email"
             {...register("email", {
               required: "Please enter email",
@@ -66,7 +69,7 @@ export default function LoginScreen() {
                 message: "Please enter valid email",
               },
             })}
-            className="w-full"
+            className="w-full px-2 py-1 rounded-lg"
             id="email"
             autoFocus
           />
@@ -76,9 +79,10 @@ export default function LoginScreen() {
             </span>
           )}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 text-[var(--black)]">
           <label htmlFor="password">Password</label>
           <input
+            placeholder="Enter your password"
             type="password"
             {...register("password", {
               required: "Please enter password",
@@ -87,7 +91,7 @@ export default function LoginScreen() {
                 message: "Password must be at least 8 chars",
               },
             })}
-            className="w-full"
+            className="w-full px-2 py-1 rounded-lg"
             id="password"
             autoFocus
           />
@@ -98,14 +102,14 @@ export default function LoginScreen() {
           )}
         </div>
         <div className="mb-4">
-          <button onClick={() => {}} className="primary-button">
+          <button onClick={() => {}} className="pri-button-wide md:w-auto">
             Login
           </button>
         </div>
-        <div className="mb-4">
+        <div className="mb-4 text-[var(--black)]">
           Don&apos;t have an account?{" "}
           <Link
-            className="text-[var(--blue)] hover:text-black"
+            className="text-[var(--orange)] hover:font-bold"
             href={`/register?redirect=${redirect || "/"}`}
           >
             Register
