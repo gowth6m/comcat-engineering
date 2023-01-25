@@ -96,7 +96,7 @@ export default function NavBar() {
                     type="search"
                     // onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search for products"
-                    className="w-full rounded-lg text-white px-2 py-1 text-center mr-1"
+                    className="w-full rounded-lg text-white px-2 py-1 text-center mr-1 orange-border"
                   />
                   <button type="submit" className="w-auto mx-2 cursor-pointer">
                     <IconSearch fill="white" />

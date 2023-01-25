@@ -111,6 +111,18 @@ a {
   text-decoration: none;
 }
 
+input, select, textarea{
+  color: white;
+  background-color: var(--black);
+  outline: var(--orange);
+}
+
+textarea:focus, input:focus {
+  color: white;
+  background-color: var(--black);
+  outline: var(--orange) solid 1px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -137,14 +149,6 @@ a {
   @apply border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl cursor-pointer hover:bg-[var(--orange)] md:hover:bg-[var(--black)];
 }
 
-input, select, textarea{
-  color: white;
-  background-color: var(--black);
-  outline: var(--orange);
-}
-
-textarea:focus, input:focus {
-  color: white;
-  background-color: var(--black);
-  outline: var(--orange) solid 1px;
+.orange-border {
+  border: 1px solid var(--orange);
 }
