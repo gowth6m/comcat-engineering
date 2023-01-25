@@ -132,3 +132,7 @@ a {
 .sec-button {
   @apply text-[var(--orange)] font-bold py-2 px-4 rounded-lg border-2 border-[var(--orange)] border-solid;
 }
+
+.navProfileMenuButtons {
+  @apply border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl cursor-pointer hover:bg-[var(--orange)] md:hover:bg-[var(--black)];
+}

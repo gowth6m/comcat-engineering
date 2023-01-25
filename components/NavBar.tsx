@@ -13,20 +13,15 @@ import {
 import { motion } from "framer-motion";
 import router from "next/router";
 import { signOut, useSession } from "next-auth/react";
+import NavProfileMenu from "./NavProfileMenu";
 
 export default function NavBar() {
   const [menuOpened, setMenuOpened] = useState(false);
   const [searchOpended, setSearchOpened] = useState(false);
+  const [profileMenuOpened, setProfileMenuOpened] = useState(false);
   const [cartItemsCount, setCartItemsCount] = useState(1);
   const menuList = ["Home", "Categories", "My Account", "About", "Contact"];
   const currencyDropdown = ["GBP", "EUR", "USD", "CAD"];
-  const { status, data: session }: any = useSession();
-
-  const logoutHandler = async () => {
-    signOut({
-      callbackUrl: "/login",
-    });
-  };
 
   return (
     <>
@@ -110,10 +105,23 @@ export default function NavBar() {
               </div>
 
               {/* PROFILE ICON */}
-              <IconUser
-                fill={"white"}
-                className="hidden md:flex cursor-pointer"
-              />
+              <div className="md:flex hidden">
+                {/* DESKTOP: PROFILE MENU */}
+                {profileMenuOpened && (
+                  <motion.div
+                    className="w-60 h-auto bg-[var(--orange)] z-50 absolute ml-[-11rem] mt-9 rounded-lg origin-top"
+                    variants={variants}
+                    animate={profileMenuOpened ? "transform" : "stop"}
+                  >
+                    <NavProfileMenu />
+                  </motion.div>
+                )}
+                <IconUser
+                  fill={"white"}
+                  className="hidden md:flex cursor-pointer"
+                  onClick={() => setProfileMenuOpened(!profileMenuOpened)}
+                />
+              </div>
 
               {/* CART ICON AND CART COUNT */}
               <Link
@@ -131,7 +139,7 @@ export default function NavBar() {
           </div>
         </nav>
 
-        <div className="z-50 w-full h-14 mx-0 justify-center items-center bg-[var(--black)] md:flex hidden">
+        <div className="w-full h-14 mx-0 justify-center items-center bg-[var(--black)] md:flex hidden z-20">
           <div className="container flex flex-row flex-wrap align-middle justify-center space-x-4">
             {menuList.map((item, index) => (
               <Link
@@ -144,6 +152,11 @@ export default function NavBar() {
             ))}
           </div>
         </div>
+
+        {/* DESKTOP: PROFILE MENU */}
+        {/* <div className="w-auto h-auto bg-[var(--orange)] ml-auto mr-[] md:mt-[-3.5rem] z-50">
+          <NavProfileMenu />
+        </div> */}
 
         {/* SEARCH BAR MOBILE */}
         {searchOpended && (
@@ -192,52 +205,8 @@ export default function NavBar() {
               ))}
             </div>
 
-            <div className="flex align-middle justify-middle flex-col m-4">
-              {!session?.user ? (
-                <>
-                  <Link
-                    href={"/login"}
-                    className="border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl mb-4"
-                  >
-                    <IconLogin fill={"white"} />
-                    <div className="ml-6">Login</div>
-                  </Link>
-                  <Link
-                    href={"/register"}
-                    className="border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl"
-                  >
-                    <IconAddUser fill={"white"} />
-                    <div className="ml-6">Register</div>
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <div
-                    onClick={() => {}}
-                    className="border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl cursor-pointer mb-4"
-                  >
-                    <IconUser fill={"white"} />
-                    <div className="ml-6">Profile</div>
-                  </div>
-                  <div
-                    onClick={() => {}}
-                    className="border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl cursor-pointer mb-4"
-                  >
-                    <IconCart fill={"white"} />
-                    <div className="ml-6">Order History</div>
-                  </div>
-                  <div
-                    onClick={() => {
-                      logoutHandler();
-                    }}
-                    className="border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl cursor-pointer"
-                  >
-                    <IconLogout fill={"white"} />
-                    <div className="ml-6">Logout</div>
-                  </div>
-                </>
-              )}
-            </div>
+            {/* NAV PROFILE MENU */}
+            <NavProfileMenu />
           </motion.div>
         )}
       </div>
