@@ -145,18 +145,13 @@ export default function NavBar() {
               <Link
                 key={index}
                 href={`/${item.toLowerCase()}`}
-                className="p-2 hover:text-[var(--orange)]"
+                className="p-2 hover:text-[var(--orange)] text-white"
               >
                 {item}
               </Link>
             ))}
           </div>
         </div>
-
-        {/* DESKTOP: PROFILE MENU */}
-        {/* <div className="w-auto h-auto bg-[var(--orange)] ml-auto mr-[] md:mt-[-3.5rem] z-50">
-          <NavProfileMenu />
-        </div> */}
 
         {/* SEARCH BAR MOBILE */}
         {searchOpended && (
