@@ -136,3 +136,11 @@ a {
 .navProfileMenuButtons {
   @apply border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl cursor-pointer hover:bg-[var(--orange)] md:hover:bg-[var(--black)];
 }
+
+input, select, textarea{
+  color: white;
+}
+
+textarea:focus, input:focus {
+  color: white;
+}
