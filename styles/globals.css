@@ -124,7 +124,7 @@ textarea:focus, input:focus {
 }
 
 select {
-  background-color: var(--white) !important;
+  background-color: var(--white);
   border: var(--black) 1px solid;
   @apply rounded-xl p-2 outline-none ring-[var(--black)] focus:ring text-black;
 }
@@ -157,4 +157,8 @@ select {
 
 .orange-border {
   border: 1px solid var(--orange);
+}
+
+.currency-dropdown {
+  -webkit-appearance:none;
 }

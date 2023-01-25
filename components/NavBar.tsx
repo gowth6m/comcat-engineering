@@ -50,7 +50,7 @@ export default function NavBar() {
             {/* MD:OPTIONS */}
             <div className="hidden flex-1 justify-start md:flex align-middle">
               {/* SELECT COUNTRY */}
-              <select className="bg-[var(--black)] ml-2 text-[var(--orange)] cursor-pointer">
+              <select className="bg-[var(--black)] ml-2 text-[var(--orange)] cursor-pointer border-[var(--orange)] py-1 px-4 currency-dropdown">
                 {currencyDropdown.map((item, index) => (
                   <option key={index}>{item}</option>
                 ))}
@@ -94,7 +94,7 @@ export default function NavBar() {
                     type="search"
                     // onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search for products"
-                    className="w-full rounded-lg text-white px-2 py-1 text-center mr-1 orange-border"
+                    className="w-full rounded-lg text-white px-2 py-2 text-center mr-1 orange-border"
                   />
                   <button type="submit" className="w-auto mx-2 cursor-pointer">
                     <IconSearch fill="white" />
