@@ -1,18 +1,63 @@
 /* eslint-disable @next/next/no-img-element */
 import { Inter } from "@next/font/google";
-import { useEffect } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import Layout from "@/components/Layout";
 import "@splidejs/react-splide/css";
 import IntroGallery from "@/components/IntroGallery";
 import React from "react";
+import { CartProductDataType, Store } from "@/utils/Store";
+import { getError } from "@/utils/error";
+import axios from "axios";
+import ProductItem from "@/components/ProductItem";
+import { customToast } from "@/utils/customToast";
+import Loading from "@/components/Loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [introShowcaseCurrent, setIntroShowcaseCurrent] =
     React.useState("Best Sellers");
-
   const introShowcaseCategory = ["Best Sellers", "New Arrivals", "Clearance"];
+  const { state, dispatchStore } = useContext(Store);
+  // const { cart } = state;
+  const [{ loading, error, prod }, dispatch] = useReducer(reducer, {
+    loading: true,
+    prod: [],
+    error: "",
+  });
+  const [addingItem, setAddingItem] = useState("");
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        dispatch({ type: "FETCH_REQUEST" });
+        // await new Promise((resolve) => setTimeout(resolve, 10000));
+        const { data } = await axios.get(`/api/products/all`);
+        dispatch({ type: "FETCH_SUCCESS", payload: data });
+      } catch (error) {
+        dispatch({ type: "FETCH_FAIL", payload: getError(error) });
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  // adding items to cart
+  const addToCartHandler = async (product: any) => {
+    // setAddingItem(product.slug);
+    // const existItem = cart.cartItems.find(
+    //   (x: CartProductDataType) => x.slug === product.slug
+    // );
+    // const qty = existItem ? existItem.qty + 1 : 1;
+    // const { data } = await axios.get(`/api/products/${product._id}`);
+    // if (qty > data.countInStock) {
+    //   customToast("Sorry. Product is out of stock");
+    //   setAddingItem("");
+    //   return;
+    // }
+    // dispatchStore({ type: "CART_ADD_ITEM", payload: { ...product, qty } });
+    // await new Promise((resolve) => setTimeout(resolve, 10000));
+    // setAddingItem("");
+  };
 
   return (
     <>
@@ -42,9 +87,41 @@ export default function Home() {
           </div>
 
           {/* Intro Products Showcase */}
-          <div className="w-full h-[40vh] bg-[var(--black)] mt-4 rounded-lg"></div>
+          <div className="w-full h-auto mt-4 rounded-lg">
+            {loading ? (
+              <Loading />
+            ) : (
+              <>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-6 w-full">
+                  {prod.map((product: any) => {
+                    return (
+                      <ProductItem
+                        key={product.slug}
+                        product={product}
+                        addToCartHandler={addToCartHandler}
+                        currentAddingItem={addingItem}
+                      />
+                    );
+                  })}
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </Layout>
     </>
   );
+}
+
+function reducer(state: any, action: any) {
+  switch (action.type) {
+    case "FETCH_REQUEST":
+      return { ...state, loading: true, error: "" };
+    case "FETCH_SUCCESS":
+      return { ...state, loading: false, prod: action.payload, error: "" };
+    case "FETCH_FAIL":
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
 }
