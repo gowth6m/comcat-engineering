@@ -15,6 +15,7 @@ import { signOut, useSession } from "next-auth/react";
 
 export default function NavBar() {
   const [menuOpened, setMenuOpened] = useState(false);
+  const [searchOpended, setSearchOpened] = useState(false);
   const [cartItemsCount, setCartItemsCount] = useState(1);
   const menuList = ["Home", "Categories", "My Account", "About", "Contact"];
   const currencyDropdown = ["GBP", "EUR", "USD", "CAD"];
@@ -84,6 +85,9 @@ export default function NavBar() {
                 open={true}
                 fill={"white"}
                 className="cursor-pointer md:hidden"
+                onClick={() => {
+                  setSearchOpened(!searchOpended);
+                }}
               />
 
               {/* SEARCH BAR */}
@@ -126,7 +130,7 @@ export default function NavBar() {
           </div>
         </nav>
 
-        <div className="z-50 w-full h-14  mx-0 justify-center items-center bg-[var(--black)] md:flex hidden">
+        <div className="z-50 w-full h-14 mx-0 justify-center items-center bg-[var(--black)] md:flex hidden">
           <div className="container flex flex-row flex-wrap align-middle justify-center space-x-4">
             {menuList.map((item, index) => (
               <Link
@@ -139,6 +143,34 @@ export default function NavBar() {
             ))}
           </div>
         </div>
+
+        {/* SEARCH BAR MOBILE */}
+        {searchOpended && (
+          <motion.div
+            className="w-full h-36 bg-[var(--black)] flex justify-center align-middle origin-top"
+            variants={variants}
+            animate={searchOpended ? "transform" : "stop"}
+          >
+            <form
+              // onSubmit={searchSubmitHandler}
+              className="w-full text-white flex flex-col justify-center align-middle first-line:text-center"
+            >
+              <input
+                type="search"
+                // onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search for products"
+                className="mx-4 rounded-lg px-6 py-3 text-center"
+                autoFocus
+              />
+              <button
+                type="submit"
+                className="cursor-pointer h-12 pri-button mx-4 mt-2"
+              >
+                Search
+              </button>
+            </form>
+          </motion.div>
+        )}
 
         {/* MOBILE NAV */}
         {menuOpened && (
