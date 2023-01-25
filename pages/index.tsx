@@ -10,6 +10,7 @@ import { getError } from "@/utils/error";
 import axios from "axios";
 import ProductItem from "@/components/ProductItem";
 import MiniLoading from "@/components/MiniLoading";
+import { customToast } from "@/utils/customToast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,7 @@ export default function Home() {
     React.useState("Best Sellers");
   const introShowcaseCategory = ["Best Sellers", "New Arrivals", "Clearance"];
   const { state, dispatchStore } = useContext(Store);
-  // const { cart } = state;
+  const { cart } = state;
   const [{ loading, error, prod }, dispatch] = useReducer(reducer, {
     loading: true,
     prod: [],
@@ -30,7 +31,7 @@ export default function Home() {
     const fetchProducts = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        await new Promise((resolve) => setTimeout(resolve, 10000));
+        // await new Promise((resolve) => setTimeout(resolve, 10000));
         const { data } = await axios.get(`/api/products/all`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
@@ -42,20 +43,20 @@ export default function Home() {
 
   // adding items to cart
   const addToCartHandler = async (product: any) => {
-    // setAddingItem(product.slug);
-    // const existItem = cart.cartItems.find(
-    //   (x: CartProductDataType) => x.slug === product.slug
-    // );
-    // const qty = existItem ? existItem.qty + 1 : 1;
-    // const { data } = await axios.get(`/api/products/${product._id}`);
-    // if (qty > data.countInStock) {
-    //   customToast("Sorry. Product is out of stock");
-    //   setAddingItem("");
-    //   return;
-    // }
-    // dispatchStore({ type: "CART_ADD_ITEM", payload: { ...product, qty } });
+    setAddingItem(product.slug);
+    const existItem = cart.cartItems.find(
+      (x: CartProductDataType) => x.slug === product.slug
+    );
+    const qty = existItem ? existItem.qty + 1 : 1;
+    const { data } = await axios.get(`/api/products/${product._id}`);
+    if (qty > data.countInStock) {
+      customToast("Sorry. Product is out of stock");
+      setAddingItem("");
+      return;
+    }
+    dispatchStore({ type: "CART_ADD_ITEM", payload: { ...product, qty } });
     // await new Promise((resolve) => setTimeout(resolve, 10000));
-    // setAddingItem("");
+    setAddingItem("");
   };
 
   return (

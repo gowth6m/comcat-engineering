@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import { ProductDataType } from "./data";
 import Cookies from "js-cookie";
 export const Store = createContext({} as any);
 
@@ -9,7 +10,7 @@ const initialState = {
 };
 
 interface ICart {
-  cartItems: any[];
+  cartItems: ProductDataType[];
   shippingAddress?: {};
 }
 
@@ -42,10 +43,10 @@ function reducer(state: IState, action: IAction) {
     case "CART_ADD_ITEM": {
       const newItem = action.payload;
       const existItem = state.cart.cartItems.find(
-        (item: any) => item.slug === newItem.slug
+        (item: ProductDataType) => item.slug === newItem.slug
       );
       const cartItems = existItem
-        ? state.cart.cartItems.map((item: any) =>
+        ? state.cart.cartItems.map((item: ProductDataType) =>
             item.slug === existItem.slug ? newItem : item
           )
         : [...state.cart.cartItems, newItem];

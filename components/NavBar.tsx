@@ -1,27 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  IconAddUser,
-  IconCart,
-  IconLogin,
-  IconLogout,
-  IconMenu,
-  IconSearch,
-  IconUser,
-} from "./CustomIcons";
+import { IconCart, IconMenu, IconSearch, IconUser } from "./CustomIcons";
 import { motion } from "framer-motion";
-import router from "next/router";
-import { signOut, useSession } from "next-auth/react";
 import NavProfileMenu from "./NavProfileMenu";
+import { Store } from "@/utils/Store";
 
 export default function NavBar() {
   const [menuOpened, setMenuOpened] = useState(false);
   const [searchOpended, setSearchOpened] = useState(false);
   const [profileMenuOpened, setProfileMenuOpened] = useState(false);
-  const [cartItemsCount, setCartItemsCount] = useState(1);
+  const [cartItemsCount, setCartItemsCount] = useState(0);
   const menuList = ["Home", "Categories", "My Account", "About", "Contact"];
   const currencyDropdown = ["GBP", "EUR", "USD", "CAD"];
+  const { state, dispatchStore } = useContext(Store);
+
+  useEffect(() => {
+    setCartItemsCount(
+      state.cart.cartItems.reduce((a: any, c: any) => a + c.qty, 0)
+    );
+  }, [cartItemsCount, state.cart.cartItems]);
 
   return (
     <>

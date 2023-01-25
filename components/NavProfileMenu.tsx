@@ -1,6 +1,8 @@
+import { Store } from "@/utils/Store";
+import Cookies from "js-cookie";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import {
   IconLogin,
   IconAddUser,
@@ -11,8 +13,11 @@ import {
 
 export default function NavProfileMenu() {
   const { data: session }: any = useSession();
+  const { state, dispatchStore } = useContext(Store);
 
   const logoutHandler = async () => {
+    Cookies.remove("cart");
+    dispatchStore({ type: "CART_RESET" });
     signOut({
       callbackUrl: "/login",
     });

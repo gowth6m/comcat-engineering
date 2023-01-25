@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { Session } from "inspector";
+import { StoreProvider } from "@/utils/Store";
 import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 
@@ -9,7 +9,9 @@ export default function App({
 }: AppProps) {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <StoreProvider>
+        <Component {...pageProps} />
+      </StoreProvider>
     </SessionProvider>
   );
 }
