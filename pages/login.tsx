@@ -54,9 +54,7 @@ export default function LoginScreen() {
         className="mx-auto max-w-screen-sm mt-8"
         onSubmit={handleSubmit(submitHandler)}
       >
-        <div className="heading1">
-          Login
-        </div>
+        <div className="heading1">Login</div>
         <div className="mb-4 text-[var(--black)]">
           <label htmlFor="email">Email</label>
           <input
@@ -69,7 +67,7 @@ export default function LoginScreen() {
                 message: "Please enter valid email",
               },
             })}
-            className="w-full px-2 py-1 rounded-lg"
+            className="w-full p-2 rounded-lg"
             id="email"
             autoFocus
           />
@@ -91,9 +89,8 @@ export default function LoginScreen() {
                 message: "Password must be at least 8 chars",
               },
             })}
-            className="w-full px-2 py-1 rounded-lg"
+            className="w-full p-2 rounded-lg"
             id="password"
-            autoFocus
           />
           {errors.password && (
             <span className="text-red-500">

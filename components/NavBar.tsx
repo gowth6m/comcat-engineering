@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  IconAddUser,
   IconCart,
   IconLogin,
   IconLogout,
@@ -73,7 +74,7 @@ export default function NavBar() {
             <Image
               src="/logo/logo_transparent.svg"
               alt="GCE Logo"
-              className="cursor-pointer flex-1-1"
+              className="flex-1-1 cursor-pointer"
               width={80}
               height={80}
             />
@@ -193,13 +194,22 @@ export default function NavBar() {
 
             <div className="flex align-middle justify-middle flex-col m-4">
               {!session?.user ? (
-                <Link
-                  href={"/login"}
-                  className="border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl"
-                >
-                  <IconLogin fill={"white"} />
-                  <div className="ml-6">Login</div>
-                </Link>
+                <>
+                  <Link
+                    href={"/login"}
+                    className="border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl mb-4"
+                  >
+                    <IconLogin fill={"white"} />
+                    <div className="ml-6">Login</div>
+                  </Link>
+                  <Link
+                    href={"/register"}
+                    className="border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl"
+                  >
+                    <IconAddUser fill={"white"} />
+                    <div className="ml-6">Register</div>
+                  </Link>
+                </>
               ) : (
                 <>
                   <div
