@@ -45,7 +45,7 @@ export default function ProductItem({
 
         <div className="flex flex-row align-middle justify-between w-full bg-[var(--black)] h-10 ">
           <div className="text-white my-auto flex-1 text-center w-full">
-            £{product.price.toFixed(2)}
+            £{product.price.toFixed(0)}
           </div>
           <button className="justify-self-center flex-1  w-full hover:bg-[var(--orange)]">
             <IconHeart fill={"white"} className={"mx-auto"} />
