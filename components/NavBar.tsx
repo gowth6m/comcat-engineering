@@ -48,7 +48,7 @@ export default function NavBar() {
             </div>
 
             {/* MD:OPTIONS */}
-            <div className="hidden flex-1 justify-start md:flex">
+            <div className="hidden flex-1 justify-start md:flex align-middle">
               {/* SELECT COUNTRY */}
               <select className="bg-[var(--black)] ml-2 text-[var(--orange)] cursor-pointer">
                 {currencyDropdown.map((item, index) => (
@@ -56,10 +56,10 @@ export default function NavBar() {
                 ))}
               </select>
               {/* CONTACT NO */}
-              <div>
-                <p className="text-white ml-2 hover:text-[var(--orange)] cursor-pointer">
+              <div className="align-middle flex h-full">
+                <div className="text-white ml-2 hover:text-[var(--orange)] cursor-pointer h-full flex justify-center align-middle py-2">
                   +44 123 456 7890
-                </p>
+                </div>
               </div>
             </div>
 
