@@ -9,8 +9,7 @@ import { CartProductDataType, Store } from "@/utils/Store";
 import { getError } from "@/utils/error";
 import axios from "axios";
 import ProductItem from "@/components/ProductItem";
-import { customToast } from "@/utils/customToast";
-import Loading from "@/components/Loading";
+import MiniLoading from "@/components/MiniLoading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +30,7 @@ export default function Home() {
     const fetchProducts = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        // await new Promise((resolve) => setTimeout(resolve, 10000));
+        await new Promise((resolve) => setTimeout(resolve, 10000));
         const { data } = await axios.get(`/api/products/all`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
@@ -89,7 +88,7 @@ export default function Home() {
           {/* Intro Products Showcase */}
           <div className="w-full h-auto mt-4 rounded-lg">
             {loading ? (
-              <Loading />
+              <MiniLoading />
             ) : (
               <>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-6 w-full">
