@@ -4,7 +4,9 @@ const nextConfig = {
   images: {
     loader: 'imgix',
     path: '/',
+    domains: ['localhost', 'picsum.photos', 'adexa.co.uk']
   },
+
 }
 
 module.exports = nextConfig

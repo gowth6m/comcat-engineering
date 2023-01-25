@@ -196,31 +196,31 @@ function CartScreen() {
             </div>
           </>
         ) : (
-          <div className="mb-4 text-2xl text-center font-semibold md:w-2/6 md:mx-auto">
+          <div className="mb-4 mt-2 text-2xl text-center font-semibold md:w-2/6 md:mx-auto text-[var(--orange)]">
             Cart is empty.
             <br />
             <Link href="/">
-              <div className="text-black primary-button my-4">
+              <div className="text-black pri-button my-4">
                 Continue Shopping
               </div>
             </Link>
           </div>
         )}
 
-        <div>
+        <div className="text-black text-center">
           <hr />
           <br />
           Need more help?{" "}
           <Link
             href="/contact"
-            className="text-[var(--blue)] hover:text-[var(--black)]"
+            className="text-[var(--orange)] hover:text-[var(--orange)]"
           >
             Contact us
           </Link>{" "}
           or call us on{" "}
           <a
             href="tel:01234567890"
-            className="text-[var(--blue)] hover:text-[var(--black)]"
+            className="text-[var(--orange)] hover:text-[var(--orange)]"
           >
             01234 567890
           </a>
