@@ -2,8 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    loader: 'imgix',
-    path: '/',
     domains: ['localhost', 'picsum.photos', 'adexa.co.uk']
   },
 

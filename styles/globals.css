@@ -28,6 +28,7 @@
     #0071ff33 160deg,
     transparent 360deg
   );
+  
   --secondary-glow: radial-gradient(
     rgba(255, 255, 255, 1),
     rgba(255, 255, 255, 0)
@@ -157,6 +158,10 @@ select {
 
 .orange-border {
   border: 1px solid var(--orange);
+}
+
+.black-border {
+  border: 1px solid var(--black);
 }
 
 .currency-dropdown {
