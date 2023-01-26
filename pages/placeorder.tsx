@@ -36,6 +36,7 @@ export default function PlaceOrderScreen() {
   const placeOrderHandler = async () => {
     try {
       setLoading(true);
+      console.log("============= passes 0");
       const { data } = await axios.post("/api/orders", {
         orderItems: cartItems,
         shippingAddress,
@@ -45,8 +46,10 @@ export default function PlaceOrderScreen() {
         taxPrice,
         totalPrice,
       });
+      console.log("passes 1");
       setLoading(false);
       dispatchStore({ type: "CART_CLEAR_ITEMS" });
+      console.log("passes 2");
       Cookies.set("cart", JSON.stringify({ ...cart, cartItems: [] }));
       router.push(`/order/${data._id}`);
     } catch (error) {
@@ -203,7 +206,7 @@ function EmptyCart() {
             href="tel:01234567890"
             className="text-[var(--orange)] hover:text-[var(--orange)]"
           >
-            01234 567890
+            +44 123 456 7890
           </a>
           .
           <br />
@@ -212,8 +215,4 @@ function EmptyCart() {
       </div>
     </>
   );
-}
-
-function CartDivider() {
-  return <div className="h-[1px] w-full bg-[#00000050]"></div>;
 }

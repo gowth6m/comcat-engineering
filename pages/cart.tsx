@@ -223,7 +223,7 @@ function CartScreen() {
             href="tel:01234567890"
             className="text-[var(--orange)] hover:text-[var(--orange)]"
           >
-            01234 567890
+            +44 123 456 7890
           </a>
           .
           <br />
