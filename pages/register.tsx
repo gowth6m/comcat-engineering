@@ -70,7 +70,6 @@ export default function RegisterScreen() {
             {...register("name", {
               required: "Please enter name",
             })}
-            className="w-full p-2 rounded-lg"
             id="name"
             autoFocus
           />
@@ -91,7 +90,6 @@ export default function RegisterScreen() {
                 message: "Please enter valid email",
               },
             })}
-            className="w-full p-2 rounded-lg"
             id="email"
           />
           {errors.email && (
@@ -111,7 +109,6 @@ export default function RegisterScreen() {
                 message: "Password must be at least 8 chars",
               },
             })}
-            className="w-full p-2 rounded-lg"
             id="password"
           />
           {errors.password && (
@@ -123,7 +120,6 @@ export default function RegisterScreen() {
         <div className="mb-4 text-black">
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
-            className="w-full p-2 rounded-lg"
             type="password"
             id="confirmPassword"
             {...register("confirmPassword", {

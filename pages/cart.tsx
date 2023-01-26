@@ -99,7 +99,7 @@ function CartScreen() {
                             className="text-[var(--orange)] text-right flex flex-row"
                           >
                             Remove
-                            <IconRemove fill="var(--orange)" />
+                            <IconRemove fill="var(--orange)" className="ml-1" />
                           </button>
                         </div>
                       </div>

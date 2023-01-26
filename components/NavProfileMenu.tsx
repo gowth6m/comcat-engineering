@@ -38,10 +38,10 @@ export default function NavProfileMenu() {
         </>
       ) : (
         <>
-          <div onClick={() => {}} className="navProfileMenuButtons mb-4">
+          <Link href={"/profile"} className="navProfileMenuButtons mb-4">
             <IconUser fill={"white"} />
             <div className="ml-6">Profile</div>
-          </div>
+          </Link>
           <div onClick={() => {}} className="navProfileMenuButtons mb-4">
             <IconCart fill={"white"} />
             <div className="ml-6">Order History</div>

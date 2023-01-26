@@ -67,7 +67,6 @@ export default function LoginScreen() {
                 message: "Please enter valid email",
               },
             })}
-            className="w-full p-2 rounded-lg"
             id="email"
             autoFocus
           />
@@ -89,7 +88,6 @@ export default function LoginScreen() {
                 message: "Password must be at least 8 chars",
               },
             })}
-            className="w-full p-2 rounded-lg"
             id="password"
           />
           {errors.password && (

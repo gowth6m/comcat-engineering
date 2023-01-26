@@ -116,6 +116,8 @@ input, textarea{
   color: white;
   background-color: var(--black);
   outline: var(--orange);
+
+  @apply w-full p-2 rounded-lg;
 }
 
 textarea:focus, input:focus {
@@ -141,11 +143,13 @@ select {
 }
 
 .pri-button {
-  @apply bg-[var(--orange)] text-white font-bold py-2 px-8 rounded-lg;
+  border: 2px solid var(--orange);
+  @apply bg-[var(--orange)] text-white font-bold py-2 px-8 rounded-lg hover:bg-[var(--black)] hover:text-[var(--orange)];
 }
 
 .pri-button-wide {
-  @apply bg-[var(--orange)] text-white font-bold py-2 px-8 rounded-lg w-full;
+  border: 2px solid var(--orange);
+  @apply bg-[var(--orange)] text-white font-bold py-2 px-8 rounded-lg w-full hover:bg-[var(--black)] hover:text-[var(--orange)];
 }
 
 .sec-button {
@@ -167,3 +171,4 @@ select {
 .currency-dropdown {
   -webkit-appearance:none;
 }
+
