@@ -166,12 +166,12 @@ export default function NavBar() {
                 type="search"
                 // onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search for products"
-                className="mx-4 rounded-lg px-6 py-3 text-center"
+                className="mx-auto rounded-lg text-center orange-border w-5/6"
                 autoFocus
               />
               <button
                 type="submit"
-                className="cursor-pointer h-12 pri-button mx-4 mt-2"
+                className="cursor-pointer h-12 pri-button mx-auto mt-2 w-5/6"
               >
                 Search
               </button>
