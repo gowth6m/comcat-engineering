@@ -49,7 +49,7 @@ export default function PaymentScreen() {
     <Auth>
       <Layout title="Payment">
         <CheckoutLayout activeStep={2} />
-        <form className="mx-auto max-w-screen-sm" onSubmit={submitHandler}>
+        <form className="mx-auto max-w-screen-sm mt-8" onSubmit={submitHandler}>
           <h1 className="mb-4 heading1">Payment Method</h1>
           <RadioGroup
             value={selectedPaymentMethod}
