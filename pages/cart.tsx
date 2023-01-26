@@ -75,7 +75,7 @@ function CartScreen() {
                             £{item.price.toFixed(2)}
                           </div>
                           <select
-                            className="px-4 w-16"
+                            className="px-4 w-20"
                             value={item.qty}
                             onChange={(e) => {
                               updateCartHandler(item, e.target.value);
