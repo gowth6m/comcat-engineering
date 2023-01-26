@@ -67,12 +67,9 @@ export default function NavBar() {
             <Image
               src="/logo/logo_transparent.svg"
               alt="GCE Logo"
-              className="flex-1-1 cursor-pointer"
+              className="flex-1-1 pointer-events-none"
               width={80}
               height={80}
-              onClick={() => {
-                window.location.href = "/";
-              }}
             />
 
             {/* SEARCH AND CART */}
