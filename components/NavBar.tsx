@@ -70,6 +70,9 @@ export default function NavBar() {
               className="flex-1-1 cursor-pointer"
               width={80}
               height={80}
+              onClick={() => {
+                window.location.href = "/";
+              }}
             />
 
             {/* SEARCH AND CART */}

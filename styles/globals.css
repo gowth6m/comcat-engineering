@@ -124,7 +124,6 @@ input, textarea{
 textarea:focus, input:focus {
   color: white;
   background-color: var(--black);
-  outline: var(--orange) solid 1px;
 }
 
 select {
