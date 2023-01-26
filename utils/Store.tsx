@@ -27,7 +27,7 @@ export type CartProductDataType = {
   _id: string;
   name: string;
   slug: string;
-  category: string;
+  category: string[];
   image: string;
   price: number;
   brand: string;
