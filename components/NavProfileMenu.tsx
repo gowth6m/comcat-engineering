@@ -9,6 +9,7 @@ import {
   IconUser,
   IconCart,
   IconLogout,
+  IconBarChart,
 } from "./CustomIcons";
 
 export default function NavProfileMenu() {
@@ -42,10 +43,27 @@ export default function NavProfileMenu() {
             <IconUser fill={"white"} />
             <div className="ml-6">Profile</div>
           </Link>
-          <Link href={"/order-history"} onClick={() => {}} className="navProfileMenuButtons mb-4">
+
+          <Link
+            href={"/order-history"}
+            onClick={() => {}}
+            className="navProfileMenuButtons mb-4"
+          >
             <IconCart fill={"white"} />
             <div className="ml-6">Order History</div>
           </Link>
+
+          {session?.user.isAdmin && (
+            <Link
+              href={"/admin/dashboard"}
+              onClick={() => {}}
+              className="navProfileMenuButtons mb-4"
+            >
+              <IconBarChart fill={"white"} />
+              <div className="ml-6">Admin Dashboard</div>
+            </Link>
+          )}
+
           <div
             onClick={() => {
               logoutHandler();

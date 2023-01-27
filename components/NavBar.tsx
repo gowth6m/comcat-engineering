@@ -107,7 +107,7 @@ export default function NavBar() {
                 {/* DESKTOP: PROFILE MENU */}
                 {profileMenuOpened && (
                   <motion.div
-                    className="w-60 h-auto bg-[var(--orange)] z-50 absolute ml-[-11rem] mt-9 rounded-lg origin-top"
+                    className="w-70 h-auto bg-[var(--orange)] z-50 absolute ml-[-12rem] mt-9 rounded-lg origin-top"
                     variants={variants}
                     animate={profileMenuOpened ? "transform" : "stop"}
                   >
@@ -186,12 +186,12 @@ export default function NavBar() {
             variants={variants}
             animate={menuOpened ? "transform" : "stop"}
           >
-            <div className="flex align-middle justify-middle flex-col m-4">
+            <div className="flex align-middle justify-middle flex-col mx-4 mt-2">
               {menuList.map((item, index) => (
                 <Link
                   key={index}
                   href={`/${item.toLowerCase()}`}
-                  className="p-4 hover:text-[var(--orange)] text-white"
+                  className="p-3 hover:text-[var(--orange)] text-white"
                 >
                   {item}
                 </Link>

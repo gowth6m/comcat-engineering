@@ -16,7 +16,6 @@ const handler = async (req: any, res: any) => {
 
     const { user }: any = session;
     await db.connect();
-    console.log("Passed db.connect");
     const newOrder = new Order({
         ...req.body,
         user: user._id,

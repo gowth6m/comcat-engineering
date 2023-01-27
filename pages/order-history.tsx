@@ -19,6 +19,7 @@ function reducer(state: any, action: any) {
       return state;
   }
 }
+
 function OrderHistoryScreen() {
   const [{ loading, error, orders }, dispatch] = useReducer(reducer, {
     loading: true,
@@ -39,6 +40,7 @@ function OrderHistoryScreen() {
     };
     fetchOrders();
   }, []);
+  
   return (
     <Auth>
       <Layout title="Order History">
