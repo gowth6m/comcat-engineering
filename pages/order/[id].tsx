@@ -160,7 +160,7 @@ function OrderScreen() {
               <div className="flex flex-col w-full md:w-2/6">
                 {/* Address */}
                 <div className="flex flex-col p-4 mb-4 md:mr-4 border-2 border-[var(--orange)] rounded-lg">
-                  <div className="flex flex-col">
+                  <div className="flex flex-col p-2">
                     {shippingAddress.fullName} <br />
                     {shippingAddress.address}, <br />
                     {shippingAddress.city}, {shippingAddress.country}
@@ -179,16 +179,16 @@ function OrderScreen() {
 
                 {/* Payment Method */}
                 <div className="flex flex-col p-4 mb-4 md:mr-4 border-2 border-[var(--orange)] rounded-lg">
-                  <div className="flex flex-col m-1">{paymentMethod}</div>
+                  <div className="flex flex-col m-1 p-2">{paymentMethod}</div>
                 </div>
                 <hr />
 
                 {/* Order Items */}
                 <div className="flex flex-col p-4 md:mr-4 border-2 border-[var(--orange)] rounded-lg">
-                  <div className="flex flex-col m-1">
+                  <div className="flex flex-col m-1 p-2">
                     {orderItems.map((item: any, index: number) => (
                       <div key={index}>
-                        {item.name} ({item.qty}) £{item.price * item.qty}
+                        {item.name} ({item.qty}): £{item.price * item.qty}
                       </div>
                     ))}
                     <div className="font-semibold">
@@ -212,7 +212,9 @@ function OrderScreen() {
                   </div>
                   <div className="flex flex-row justify-between px-2 text-white">
                     <div>Shipping</div>
-                    <div>£{shippingPrice}</div>
+                    <div>
+                      {shippingPrice === 0 ? "FREE" : "£" + shippingPrice}
+                    </div>
                   </div>
                   <div className="flex flex-row justify-between px-2 text-white font-semibold">
                     <div>Total</div>
