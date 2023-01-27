@@ -42,10 +42,10 @@ export default function NavProfileMenu() {
             <IconUser fill={"white"} />
             <div className="ml-6">Profile</div>
           </Link>
-          <div onClick={() => {}} className="navProfileMenuButtons mb-4">
+          <Link href={"/order-history"} onClick={() => {}} className="navProfileMenuButtons mb-4">
             <IconCart fill={"white"} />
             <div className="ml-6">Order History</div>
-          </div>
+          </Link>
           <div
             onClick={() => {
               logoutHandler();
