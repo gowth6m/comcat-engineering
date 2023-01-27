@@ -1,4 +1,5 @@
 import AdminDashNav from "@/components/AdminDashNav";
+import MiniLoading from "@/components/MiniLoading";
 import axios from "axios";
 import error from "next/error";
 import Link from "next/link";
@@ -33,6 +34,7 @@ export default function AdminDashboardScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
+        // await new Promise((resolve) => setTimeout(resolve, 10000));
         const { data } = await axios.get(`/api/admin/summary`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
@@ -58,12 +60,14 @@ export default function AdminDashboardScreen() {
     <Auth adminOnly>
       <Layout title="Admin Dashboard">
         <div className="md:w-full mx-auto">
-          <div className="flex flex-col md:flex-row text-black mt-8">
+          <div className="flex flex-col md:flex-row text-black mt-4 md:mt-8">
             <AdminDashNav active={0} />
 
             <div className="flex-auto w-full">
               {loading ? (
-                <Loading />
+                <div className="mt-[20%]">
+                  <MiniLoading />
+                </div>
               ) : error ? (
                 <div className="alert-error">{error}</div>
               ) : (
