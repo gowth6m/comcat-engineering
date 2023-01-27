@@ -22,7 +22,8 @@ export default function PlaceOrderScreen() {
   );
   const shippingPrice = itemsPrice > 200 ? 0 : 10;
   const taxPrice = round2(0.2 * itemsPrice);
-  const totalPrice = round2(
+  const totalPrice = itemsPrice + shippingPrice + taxPrice;
+  const printTotalPrice = round2(
     itemsPrice + shippingPrice + taxPrice
   ).toLocaleString("en", options);
 
@@ -36,7 +37,6 @@ export default function PlaceOrderScreen() {
   const placeOrderHandler = async () => {
     try {
       setLoading(true);
-      console.log("============= passes 0");
       const { data } = await axios.post("/api/orders", {
         orderItems: cartItems,
         shippingAddress,
@@ -46,14 +46,13 @@ export default function PlaceOrderScreen() {
         taxPrice,
         totalPrice,
       });
-      console.log("passes 1");
       setLoading(false);
       dispatchStore({ type: "CART_CLEAR_ITEMS" });
-      console.log("passes 2");
       Cookies.set("cart", JSON.stringify({ ...cart, cartItems: [] }));
       router.push(`/order/${data._id}`);
     } catch (error) {
       setLoading(false);
+      console.log(error);
       toast.error(getError(error));
     }
   };
@@ -132,7 +131,7 @@ export default function PlaceOrderScreen() {
                 </div>
                 <div className="flex flex-row justify-between px-2 text-white font-semibold">
                   <div>Total</div>
-                  <div>£{totalPrice}</div>
+                  <div>£{printTotalPrice}</div>
                 </div>
               </div>
 

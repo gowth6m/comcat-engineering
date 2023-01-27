@@ -1,9 +1,13 @@
-import mongoose from "mongoose";
+import Order from "@/models/Order";
+import db from "@/utils/db";
 import { getSession } from "next-auth/react";
-import Order from "../../../models/Order";
-import db from "../../../utils/db";
 
 const handler = async (req: any, res: any) => {
+
+    if (req.method !== "POST") {
+        return;
+    }
+
     const session = await getSession({ req });
 
     if (!session) {
@@ -12,6 +16,7 @@ const handler = async (req: any, res: any) => {
 
     const { user }: any = session;
     await db.connect();
+    console.log("Passed db.connect");
     const newOrder = new Order({
         ...req.body,
         user: user._id,
