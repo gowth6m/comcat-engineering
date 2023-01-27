@@ -7,7 +7,7 @@ type AdminDashNavType = {
 
 export default function AdminDashNav({ active }: AdminDashNavType) {
   return (
-    <div className="w-full flex flex-row justify-center md:justify-start align-center md:flex-col text-white gap-2 md:flex-auto md:w-2/6">
+    <div className="w-full max-w-[98vw] flex flex-row justify-center md:justify-start align-center md:flex-col text-white gap-2 md:flex-auto md:w-2/6 overflow-x-hidden">
       <Link
         className={active === 0 ? activeStepCss : StepCss}
         href="/admin/dashboard"
@@ -36,6 +36,6 @@ export default function AdminDashNav({ active }: AdminDashNavType) {
   );
 }
 
-const activeStepCss = "bg-[var(--black)] px-4 py-2 rounded-lg text-white";
+const activeStepCss = "bg-[var(--black)] px-2 py-2 rounded-lg text-white";
 const StepCss =
-  "bg-[var(--orange)] hover:bg-[var(--black)] px-4 py-2 rounded-lg";
+  "bg-[var(--orange)] hover:bg-[var(--black)] px-2 py-2 rounded-lg";

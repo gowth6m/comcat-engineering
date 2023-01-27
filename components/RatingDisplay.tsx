@@ -1,5 +1,4 @@
 import React from "react";
-import { IconStar } from "./CustomIcons";
 
 export default function RatingDisplay({ rating }: { rating: number }) {
   return (

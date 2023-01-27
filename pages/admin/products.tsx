@@ -120,21 +120,24 @@ export default function AdminProdcutsScreen() {
                               <span className="ml-2">{product.name}</span>
                             </div>
                             <div className="">
-                              £{product.price.toLocaleString("en", options)}
+                              Price: £
+                              {product.price.toLocaleString("en", options)}
                             </div>
-                            <div className="">{product.countInStock}</div>
-                            <div className="">{product.rating}</div>
+                            <div className="">
+                              Stock: {product.countInStock}
+                            </div>
+                            <div className="">Rating: {product.rating}</div>
                           </div>
-                          <div className="flex flex-col ml-auto my-2">
+                          <div className="flex flex-col ml-auto my-2 gap-2">
                             <Link
-                              className="default-button"
+                              className="pri-button"
                               href={`/admin/product/${product._id}`}
                             >
                               Edit
                             </Link>
                             <button
                               onClick={() => deleteHandler(product._id)}
-                              className="default-button"
+                              className="pri-button"
                               type="button"
                             >
                               Delete
@@ -153,10 +156,10 @@ export default function AdminProdcutsScreen() {
                         <tr>
                           <th className={cssTH}>ID</th>
                           <th className={cssTH}>USER</th>
-                          <th className={cssTH}>DATE</th>
-                          <th className={cssTH}>TOTAL</th>
-                          <th className={cssTH}>PAID</th>
-                          <th className={cssTH}>DELIVERED</th>
+                          <th className={cssTH}>PRICE</th>
+
+                          <th className={cssTH}>COUNT</th>
+                          <th className={cssTH}>RATING</th>
                           <th className={cssTH}>ACTION</th>
                         </tr>
                       </thead>
@@ -168,30 +171,25 @@ export default function AdminProdcutsScreen() {
                             </td>
                             <td className="p-5">{product.name}</td>
                             <td className="p-5">
-                              {product.createdAt.substring(0, 10)}
+                              £{product.price.toLocaleString("en", options)}
                             </td>
-                            <td className="p-5">
-                              £
-                              {product.price.toLocaleString("en", options)}
-                            </td>
-                            <td className="p-5">
-                              {product.isPaid
-                                ? `${product.paidAt.substring(0, 10)}`
-                                : "not paid"}
-                            </td>
-                            <td className="p-5">
-                              {product.isDelivered
-                                ? `${product.deliveredAt.substring(0, 10)}`
-                                : "not delivered"}
-                            </td>
-                            <td className="p-5">
+                            <td className="p-5">{product.countInStock}</td>
+                            <td className="p-5">{product.rating}</td>
+                            <td className="p-5 flex gap-2">
                               <Link
-                                href={`/product/${product._id}`}
                                 className="pri-button"
-                                passHref
+                                href={`/admin/product/${product._id}`}
                               >
-                                Details
+                                Edit
                               </Link>
+
+                              <button
+                                onClick={() => deleteHandler(product._id)}
+                                className="pri-button"
+                                type="button"
+                              >
+                                Delete
+                              </button>
                             </td>
                           </tr>
                         ))}
