@@ -1,3 +1,6 @@
+import AdminDashNav from "@/components/AdminDashNav";
+import MiniLoading from "@/components/MiniLoading";
+import { Auth } from "@/utils/Auth";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -134,190 +137,181 @@ export default function AdminProductEditScreen() {
   };
 
   return (
-    <Layout title={`Edit Product ${productId}`}>
-      <div className="grid md:grid-cols-4 md:gap-5 text-black">
-        <div>
-          <ul>
-            <li>
-              <Link href="/admin/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <Link href="/admin/orders">Orders</Link>
-            </li>
-            <li>
-              <Link href="/admin/products" className="font-bold">
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link href="/admin/users">Users</Link>
-            </li>
-          </ul>
-        </div>
-        <div className="md:col-span-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : error ? (
-            <div className="alert-error">{error}</div>
-          ) : (
-            <form
-              className="mx-auto max-w-screen-md"
-              onSubmit={handleSubmit(submitHandler)}
-            >
-              <h1 className="mb-4 text-xl">{`Edit Product ${productId}`}</h1>
-              <div className="mb-4">
-                <label htmlFor="name">Name</label>
-                <input
-                  type="text"
-                  className="w-full"
-                  id="name"
-                  autoFocus
-                  {...register("name", {
-                    required: "Please enter name",
-                  })}
-                />
-                {errors.name && (
-                  <div className="text-red-500">
-                    {errors.name.message?.toString()}
-                  </div>
-                )}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="slug">Slug</label>
-                <input
-                  type="text"
-                  className="w-full"
-                  id="slug"
-                  {...register("slug", {
-                    required: "Please enter slug",
-                  })}
-                />
-                {errors.slug && (
-                  <div className="text-red-500">
-                    {errors.slug.message?.toString()}
-                  </div>
-                )}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="price">Price</label>
-                <input
-                  type="text"
-                  className="w-full"
-                  id="price"
-                  {...register("price", {
-                    required: "Please enter price",
-                  })}
-                />
-                {errors.price && (
-                  <div className="text-red-500">
-                    {errors.price.message?.toString()}
-                  </div>
-                )}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="image">image</label>
-                <input
-                  type="text"
-                  className="w-full"
-                  id="image"
-                  {...register("image", {
-                    required: "Please enter image",
-                  })}
-                />
-                {errors.image && (
-                  <div className="text-red-500">
-                    {errors.image.message?.toString()}
-                  </div>
-                )}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="imageFile">Upload image</label>
-                <input
-                  type="file"
-                  className="w-full"
-                  id="imageFile"
-                  onChange={uploadHandler}
-                />
+    <Auth adminOnly>
+      <Layout title={`Edit Product ${productId}`}>
+        <div className="md:w-full mx-auto">
+          <div className="flex flex-col md:flex-row text-black mt-4 md:mt-8">
+            <AdminDashNav active={2} />
+            <div className="flex-auto w-full">
+              {loading ? (
+                <div className="mt-[20%]">
+                  <MiniLoading />
+                </div>
+              ) : error ? (
+                <div className="alert-error">{error}</div>
+              ) : (
+                <>
+                  <form
+                    className="mx-auto max-w-screen-md"
+                    onSubmit={handleSubmit(submitHandler)}
+                  >
+                    <div className="mb-4 mt-4 md:mt-0 text-xl text-[var(--orange)]">{`Edit Product ${productId}`}</div>
+                    <div className="mb-4">
+                      <label htmlFor="name">Name</label>
+                      <input
+                        type="text"
+                        className="w-full"
+                        id="name"
+                        autoFocus
+                        {...register("name", {
+                          required: "Please enter name",
+                        })}
+                      />
+                      {errors.name && (
+                        <div className="text-red-500">
+                          {errors.name.message?.toString()}
+                        </div>
+                      )}
+                    </div>
+                    <div className="mb-4">
+                      <label htmlFor="slug">Slug</label>
+                      <input
+                        type="text"
+                        className="w-full"
+                        id="slug"
+                        {...register("slug", {
+                          required: "Please enter slug",
+                        })}
+                      />
+                      {errors.slug && (
+                        <div className="text-red-500">
+                          {errors.slug.message?.toString()}
+                        </div>
+                      )}
+                    </div>
+                    <div className="mb-4">
+                      <label htmlFor="price">Price</label>
+                      <input
+                        type="text"
+                        className="w-full"
+                        id="price"
+                        {...register("price", {
+                          required: "Please enter price",
+                        })}
+                      />
+                      {errors.price && (
+                        <div className="text-red-500">
+                          {errors.price.message?.toString()}
+                        </div>
+                      )}
+                    </div>
+                    <div className="mb-4">
+                      <label htmlFor="image">image</label>
+                      <input
+                        type="text"
+                        className="w-full"
+                        id="image"
+                        {...register("image", {
+                          required: "Please enter image",
+                        })}
+                      />
+                      {errors.image && (
+                        <div className="text-red-500">
+                          {errors.image.message?.toString()}
+                        </div>
+                      )}
+                    </div>
+                    <div className="mb-4">
+                      <label htmlFor="imageFile">Upload image</label>
+                      <input
+                        type="file"
+                        className="w-full"
+                        id="imageFile"
+                        onChange={uploadHandler}
+                      />
 
-                {loadingUpload && <div>Uploading....</div>}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="category">category</label>
-                <input
-                  type="text"
-                  className="w-full"
-                  id="category"
-                  {...register("category", {
-                    required: "Please enter category",
-                  })}
-                />
-                {errors.category && (
-                  <div className="text-red-500">
-                    {errors.category.message?.toString()}
-                  </div>
-                )}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="brand">brand</label>
-                <input
-                  type="text"
-                  className="w-full"
-                  id="brand"
-                  {...register("brand", {
-                    required: "Please enter brand",
-                  })}
-                />
-                {errors.brand && (
-                  <div className="text-red-500">
-                    {errors.brand.message?.toString()}
-                  </div>
-                )}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="countInStock">countInStock</label>
-                <input
-                  type="text"
-                  className="w-full"
-                  id="countInStock"
-                  {...register("countInStock", {
-                    required: "Please enter countInStock",
-                  })}
-                />
-                {errors.countInStock && (
-                  <div className="text-red-500">
-                    {errors.countInStock.message?.toString()}
-                  </div>
-                )}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="countInStock">description</label>
-                <input
-                  type="text"
-                  className="w-full"
-                  id="description"
-                  {...register("description", {
-                    required: "Please enter description",
-                  })}
-                />
-                {errors.description && (
-                  <div className="text-red-500">
-                    {errors.description.message?.toString()}
-                  </div>
-                )}
-              </div>
-              <div className="flex flex-row align-middle gap-2 my-8">
-                <Link className="sec-button" href={`/admin/products`}>
-                  Back
-                </Link>
+                      {loadingUpload && <div>Uploading....</div>}
+                    </div>
+                    <div className="mb-4">
+                      <label htmlFor="category">category</label>
+                      <input
+                        type="text"
+                        className="w-full"
+                        id="category"
+                        {...register("category", {
+                          required: "Please enter category",
+                        })}
+                      />
+                      {errors.category && (
+                        <div className="text-red-500">
+                          {errors.category.message?.toString()}
+                        </div>
+                      )}
+                    </div>
+                    <div className="mb-4">
+                      <label htmlFor="brand">brand</label>
+                      <input
+                        type="text"
+                        className="w-full"
+                        id="brand"
+                        {...register("brand", {
+                          required: "Please enter brand",
+                        })}
+                      />
+                      {errors.brand && (
+                        <div className="text-red-500">
+                          {errors.brand.message?.toString()}
+                        </div>
+                      )}
+                    </div>
+                    <div className="mb-4">
+                      <label htmlFor="countInStock">countInStock</label>
+                      <input
+                        type="text"
+                        className="w-full"
+                        id="countInStock"
+                        {...register("countInStock", {
+                          required: "Please enter countInStock",
+                        })}
+                      />
+                      {errors.countInStock && (
+                        <div className="text-red-500">
+                          {errors.countInStock.message?.toString()}
+                        </div>
+                      )}
+                    </div>
+                    <div className="mb-4">
+                      <label htmlFor="countInStock">description</label>
+                      <input
+                        type="text"
+                        className="w-full"
+                        id="description"
+                        {...register("description", {
+                          required: "Please enter description",
+                        })}
+                      />
+                      {errors.description && (
+                        <div className="text-red-500">
+                          {errors.description.message?.toString()}
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex flex-row align-middle gap-2 my-8">
+                      <Link className="sec-button" href={`/admin/products`}>
+                        Back
+                      </Link>
 
-                <button disabled={loadingUpdate} className="pri-button">
-                  {loadingUpdate ? "Loading" : "Update"}
-                </button>
-              </div>
-            </form>
-          )}
+                      <button disabled={loadingUpdate} className="pri-button">
+                        {loadingUpdate ? "Loading" : "Update"}
+                      </button>
+                    </div>
+                  </form>
+                </>
+              )}
+            </div>
+          </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </Auth>
   );
 }
