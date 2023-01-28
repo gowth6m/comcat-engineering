@@ -28,7 +28,6 @@ export default function NavProfileMenu() {
     <div className="flex align-middle justify-middle flex-col m-4">
       {!session?.user ? (
         <>
-          {/* <div className="px-9"> */}
           <Link href={"/login"} className="navProfileMenuButtons mb-4">
             <IconLogin fill={"white"} />
             <div className="ml-6 mr-[6rem]">Login</div>
@@ -37,7 +36,6 @@ export default function NavProfileMenu() {
             <IconAddUser fill={"white"} />
             <div className="ml-6">Register</div>
           </Link>
-          {/* </div> */}
         </>
       ) : (
         <>

@@ -1,5 +1,3 @@
-// import bcrypt from "bcryptjs";
-
 var bcrypt = require('bcryptjs');
 
 export type ProductDataType = {
@@ -62,7 +60,7 @@ const data: SampleDataType = {
       image: "https://adexa.co.uk/image/cache/catalog/Adexa/PFE800-N-1200x1200.jpg",
       price: 70,
       brand: "Nike",
-      rating: 4.5,
+      rating: 4,
       numReviews: 8,
       countInStock: 20,
       description: "A popular and expensive machine that makes chicken",
@@ -74,7 +72,7 @@ const data: SampleDataType = {
       image: "https://adexa.co.uk/image/cache/catalog/Adexa/TO4502-1200x1200.jpg",
       price: 170,
       brand: "Mango",
-      rating: 4.5,
+      rating: 2.5,
       numReviews: 8,
       countInStock: 20,
       description: "A popular and expensive machine",
@@ -86,7 +84,7 @@ const data: SampleDataType = {
       image: "https://adexa.co.uk/image/cache/catalog/Adexa/ST145BR-1200x1200.jpg",
       price: 90,
       brand: "Big",
-      rating: 4.5,
+      rating: 1,
       numReviews: 8,
       countInStock: 20,
       description: "A popular and expensive machine for making chicken",
@@ -98,7 +96,7 @@ const data: SampleDataType = {
       image: "https://adexa.co.uk/image/cache/catalog/Adexa/PFE800-N-1200x1200.jpg",
       price: 702,
       brand: "Big",
-      rating: 4.5,
+      rating: 3,
       numReviews: 8,
       countInStock: 20,
       description: "A popular chicken machine",
@@ -122,7 +120,7 @@ const data: SampleDataType = {
       image: "https://adexa.co.uk/image/cache/catalog/Adexa/ST145BR-1200x1200.jpg",
       price: 990,
       brand: "Yige",
-      rating: 4.5,
+      rating: 1.5,
       numReviews: 8,
       countInStock: 20,
       description: "A popular and expensive machine for making big chicken",
