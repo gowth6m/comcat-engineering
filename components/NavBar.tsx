@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { IconCart, IconMenu, IconSearch, IconUser } from "./CustomIcons";
 import { motion } from "framer-motion";
 import NavProfileMenu from "./NavProfileMenu";
 import { Store } from "@/utils/Store";
+import GCELogo from "./GCELogo";
 
 export default function NavBar() {
   const [menuOpened, setMenuOpened] = useState(false);
@@ -64,13 +64,9 @@ export default function NavBar() {
             </div>
 
             {/* LOGO */}
-            <Image
-              src="/logo/logo_transparent.svg"
-              alt="GCE Logo"
-              className="flex-1-1 pointer-events-none"
-              width={80}
-              height={80}
-            />
+            <div className="flex-1-1 pointer-events-none">
+              <GCELogo className="w-[80px] h-[80]" />
+            </div>
 
             {/* SEARCH AND CART */}
             <div className="flex items-center flex-1 justify-end">
