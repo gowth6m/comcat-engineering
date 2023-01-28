@@ -135,7 +135,7 @@ export default function AdminProductEditScreen() {
 
   return (
     <Layout title={`Edit Product ${productId}`}>
-      <div className="grid md:grid-cols-4 md:gap-5">
+      <div className="grid md:grid-cols-4 md:gap-5 text-black">
         <div>
           <ul>
             <li>
@@ -145,8 +145,8 @@ export default function AdminProductEditScreen() {
               <Link href="/admin/orders">Orders</Link>
             </li>
             <li>
-              <Link href="/admin/products">
-                <a className="font-bold">Products</a>
+              <Link href="/admin/products" className="font-bold">
+                Products
               </Link>
             </li>
             <li>
@@ -305,13 +305,14 @@ export default function AdminProductEditScreen() {
                   </div>
                 )}
               </div>
-              <div className="mb-4">
-                <button disabled={loadingUpdate} className="primary-button">
+              <div className="flex flex-row align-middle gap-2 my-8">
+                <Link className="sec-button" href={`/admin/products`}>
+                  Back
+                </Link>
+
+                <button disabled={loadingUpdate} className="pri-button">
                   {loadingUpdate ? "Loading" : "Update"}
                 </button>
-              </div>
-              <div className="mb-4">
-                <Link href={`/admin/products`}>Back</Link>
               </div>
             </form>
           )}
