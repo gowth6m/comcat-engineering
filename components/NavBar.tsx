@@ -5,21 +5,34 @@ import { motion } from "framer-motion";
 import NavProfileMenu from "./NavProfileMenu";
 import { Store } from "@/utils/Store";
 import GCELogo from "./GCELogo";
+import router from "next/router";
 
 export default function NavBar() {
   const [menuOpened, setMenuOpened] = useState(false);
   const [searchOpended, setSearchOpened] = useState(false);
   const [profileMenuOpened, setProfileMenuOpened] = useState(false);
   const [cartItemsCount, setCartItemsCount] = useState(0);
-  const menuList = ["Home", "Categories", "My Account", "About", "Contact"];
-  const currencyDropdown = ["GBP", "EUR", "USD", "CAD"];
   const { state, dispatchStore } = useContext(Store);
+  const [searchQuery, setSearchQuery] = useState("");
+  const menuList = [
+    { name: "Home", href: "/" },
+    { name: "Categories", href: "/categories" },
+    { name: "My Account", href: "/profile" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
+  ];
+  const currencyDropdown = ["GBP", "EUR", "USD", "CAD"];
 
   useEffect(() => {
     setCartItemsCount(
       state.cart.cartItems.reduce((a: any, c: any) => a + c.qty, 0)
     );
   }, [cartItemsCount, state.cart.cartItems]);
+
+  const searchSubmitHandler = (e: any) => {
+    e.preventDefault();
+    router.push(`/search?query=${searchQuery}`);
+  };
 
   return (
     <>
@@ -83,12 +96,12 @@ export default function NavBar() {
               {/* SEARCH BAR */}
               <div className="hidden md:flex">
                 <form
-                  //   onSubmit={searchSubmitHandler}
+                  onSubmit={searchSubmitHandler}
                   className="w-full text-white flex flex-row justify-center align-middle first-line:text-center"
                 >
                   <input
                     type="search"
-                    // onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search for products"
                     className="w-full rounded-lg text-white px-2 py-2 text-center mr-1 orange-border"
                   />
@@ -135,13 +148,13 @@ export default function NavBar() {
 
         <div className="w-full h-14 mx-0 justify-center items-center bg-[var(--black)] md:flex hidden z-20">
           <div className="container flex flex-row flex-wrap align-middle justify-center space-x-4">
-            {menuList.map((item, index) => (
+            {menuList.map((item) => (
               <Link
-                key={index}
-                href={`/${item.toLowerCase()}`}
+                key={item.name}
+                href={item.href}
                 className="p-2 hover:text-[var(--orange)] text-white"
               >
-                {item}
+                {item.name}
               </Link>
             ))}
           </div>
@@ -155,12 +168,12 @@ export default function NavBar() {
             animate={searchOpended ? "transform" : "stop"}
           >
             <form
-              // onSubmit={searchSubmitHandler}
+              onSubmit={searchSubmitHandler}
               className="w-full text-white flex flex-col justify-center align-middle first-line:text-center"
             >
               <input
                 type="search"
-                // onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search for products"
                 className="mx-auto rounded-lg text-center orange-border w-5/6"
                 autoFocus
@@ -183,13 +196,13 @@ export default function NavBar() {
             animate={menuOpened ? "transform" : "stop"}
           >
             <div className="flex align-middle justify-middle flex-col mx-4 mt-2">
-              {menuList.map((item, index) => (
+              {menuList.map((item) => (
                 <Link
-                  key={index}
-                  href={`/${item.toLowerCase()}`}
+                  key={item.name}
+                  href={item.href}
                   className="p-3 hover:text-[var(--orange)] text-white"
                 >
-                  {item}
+                  {item.name}
                 </Link>
               ))}
             </div>

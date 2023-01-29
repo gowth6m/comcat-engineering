@@ -265,7 +265,7 @@ export default function AdminProductEditScreen() {
                       )}
                     </div>
                     <div className="mb-4">
-                      <label htmlFor="countInStock">countInStock</label>
+                      <label htmlFor="countInStock">stock</label>
                       <input
                         type="text"
                         className="w-full"

@@ -1,15 +1,25 @@
+import Order from "@/models/Order";
+import db from "@/utils/db";
 import { getSession } from "next-auth/react";
-import Order from "../../../../models/Order";
-import db from "../../../../utils/db";
+
 
 const handler = async (req: any, res: any) => {
     const session: any = await getSession({ req });
     if (!session || (session && !session.user.isAdmin)) {
-        return res.status(401).send("signin required");
+        return res.status(401).send("Admin login required");
     }
     if (req.method === "GET") {
         await db.connect();
-        const orders = await Order.find({}).populate("user", "name");
+        var orders: any;
+
+        if (req.query.delivered === 'false') {
+            orders = await Order.find({
+                isDelivered: false
+            });
+        } else {
+            orders = await Order.find({}).populate("user", "name");
+        }
+
         await db.disconnect();
         res.send(orders);
     } else {

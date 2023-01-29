@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'picsum.photos', 'adexa.co.uk']
+    domains: ['localhost', 'res.cloudinary.com', 'picsum.photos', 'adexa.co.uk']
   },
 
 }
