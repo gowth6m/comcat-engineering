@@ -8,16 +8,16 @@ import GCELogo from "./GCELogo";
 import router from "next/router";
 
 export default function NavBar() {
+  const { state, dispatchStore } = useContext(Store);
   const [menuOpened, setMenuOpened] = useState(false);
   const [searchOpended, setSearchOpened] = useState(false);
   const [profileMenuOpened, setProfileMenuOpened] = useState(false);
   const [cartItemsCount, setCartItemsCount] = useState(0);
-  const { state, dispatchStore } = useContext(Store);
   const [searchQuery, setSearchQuery] = useState("");
   const menuList = [
     { name: "Home", href: "/" },
     { name: "Categories", href: "/categories" },
-    { name: "My Account", href: "/profile" },
+    { name: "My Account", href: "/account" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
@@ -116,7 +116,7 @@ export default function NavBar() {
                 {/* DESKTOP: PROFILE MENU */}
                 {profileMenuOpened && (
                   <motion.div
-                    className="w-70 h-auto bg-[var(--orange)] z-50 absolute ml-[-12rem] mt-9 rounded-lg origin-top"
+                    className="w-70 h-auto bg-[var(--orange)] z-50 absolute ml-[-10rem] mt-10 rounded-lg origin-top"
                     variants={variants}
                     animate={profileMenuOpened ? "transform" : "stop"}
                   >

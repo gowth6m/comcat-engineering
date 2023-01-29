@@ -24,13 +24,16 @@ export default function NavProfileMenu() {
     });
   };
 
+  const currentUser = session?.user ? session?.user.name : "Guest";
+  const currentUserInitials = currentUser.split(" ").map((n: any) => n[0]);
+
   return (
     <div className="flex align-middle justify-middle flex-col m-4">
       {!session?.user ? (
         <>
           <Link href={"/login"} className="navProfileMenuButtons mb-4">
             <IconLogin fill={"white"} />
-            <div className="ml-6 mr-[6rem]">Login</div>
+            <div className="ml-6 mr-[4rem]">Login</div>
           </Link>
           <Link href={"/register"} className="navProfileMenuButtons">
             <IconAddUser fill={"white"} />
@@ -41,7 +44,11 @@ export default function NavProfileMenu() {
         <>
           <Link href={"/profile"} className="navProfileMenuButtons mb-4">
             <IconUser fill={"white"} />
-            <div className="ml-6">Profile</div>
+            {session?.user ? (
+              <div className="ml-6">Profile ({currentUserInitials})</div>
+            ) : (
+              <div className="ml-6">Profile</div>
+            )}
           </Link>
 
           <Link
