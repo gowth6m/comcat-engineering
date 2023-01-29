@@ -12,10 +12,16 @@ export default function NavBar() {
   const [searchOpended, setSearchOpened] = useState(false);
   const [profileMenuOpened, setProfileMenuOpened] = useState(false);
   const [cartItemsCount, setCartItemsCount] = useState(0);
-  const menuList = ["Home", "Categories", "My Account", "About", "Contact"];
-  const currencyDropdown = ["GBP", "EUR", "USD", "CAD"];
   const { state, dispatchStore } = useContext(Store);
   const [searchQuery, setSearchQuery] = useState("");
+  const menuList = [
+    { name: "Home", href: "/" },
+    { name: "Categories", href: "/categories" },
+    { name: "My Account", href: "/profile" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
+  ];
+  const currencyDropdown = ["GBP", "EUR", "USD", "CAD"];
 
   useEffect(() => {
     setCartItemsCount(
@@ -142,13 +148,13 @@ export default function NavBar() {
 
         <div className="w-full h-14 mx-0 justify-center items-center bg-[var(--black)] md:flex hidden z-20">
           <div className="container flex flex-row flex-wrap align-middle justify-center space-x-4">
-            {menuList.map((item, index) => (
+            {menuList.map((item) => (
               <Link
-                key={index}
-                href={`/${item.toLowerCase()}`}
+                key={item.name}
+                href={`/${item.href}`}
                 className="p-2 hover:text-[var(--orange)] text-white"
               >
-                {item}
+                {item.name}
               </Link>
             ))}
           </div>
@@ -190,13 +196,13 @@ export default function NavBar() {
             animate={menuOpened ? "transform" : "stop"}
           >
             <div className="flex align-middle justify-middle flex-col mx-4 mt-2">
-              {menuList.map((item, index) => (
+              {menuList.map((item) => (
                 <Link
-                  key={index}
-                  href={`/${item.toLowerCase()}`}
+                  key={item.name}
+                  href={`/${item.href}`}
                   className="p-3 hover:text-[var(--orange)] text-white"
                 >
-                  {item}
+                  {item.name}
                 </Link>
               ))}
             </div>
