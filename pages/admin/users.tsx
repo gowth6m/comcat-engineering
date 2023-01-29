@@ -3,7 +3,8 @@ import MiniLoading from "@/components/MiniLoading";
 import { Auth } from "@/utils/Auth";
 import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useReducer } from "react";
+import router from "next/router";
+import React, { useEffect, useReducer, useState } from "react";
 import toast from "react-hot-toast";
 import Layout from "../../components/Layout";
 import { getError } from "../../utils/error";
@@ -37,6 +38,29 @@ function AdminUsersScreen() {
       users: [],
       error: "",
     });
+  const [searchQuery, setSearchQuery] = useState("");
+
+  function searchSubmitHandler(e: any) {
+    e.preventDefault();
+
+    const fetchData = async () => {
+      try {
+        dispatch({ type: "FETCH_REQUEST" });
+        const { data } = await axios.get(`/api/admin/users`, {
+          params: { search: searchQuery },
+        });
+        dispatch({ type: "FETCH_SUCCESS", payload: data });
+      } catch (err) {
+        dispatch({ type: "FETCH_FAIL", payload: getError(err) });
+      }
+    };
+    if (successDelete) {
+      dispatch({ type: "DELETE_RESET" });
+    } else {
+      fetchData();
+    }
+    setSearchQuery("");
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -91,12 +115,12 @@ function AdminUsersScreen() {
                         Create User
                       </button>
                       <form
-                        // onSubmit={searchSubmitHandler}
+                        onSubmit={searchSubmitHandler}
                         className="w-full text-white flex flex-row align-middle first-line:text-center my-2 mx-2"
                       >
                         <input
                           type="search"
-                          // onChange={(e) => setSearchQuery(e.target.value)}
+                          onChange={(e) => setSearchQuery(e.target.value)}
                           placeholder="Search for users"
                           className="rounded-lg text-center orange-border w-full"
                         />
@@ -113,15 +137,14 @@ function AdminUsersScreen() {
                         <div className="flex flex-row">
                           <div className="flex flex-col">
                             <div className="text-lg font-semibold">
-                              user {user._id.substring(20, 24)}
-                              <span className="ml-2">{user.name}</span>
+                              {user.email}
                             </div>
-                            <div className="">Email: {user.email}</div>
+                            <div className="">Name: {user.name}</div>
                             <div className="">
                               Admin: {user.isAdmin ? "Yes" : "No"}
                             </div>
                           </div>
-                          <div className="flex flex-col ml-auto my-2 gap-2">
+                          <div className="flex flex-col ml-auto my-2 gap-2 mx-2">
                             <Link
                               className="pri-button"
                               href={`/admin/user/${user._id}`}
@@ -150,21 +173,31 @@ function AdminUsersScreen() {
                         Create
                       </button>
                       <form
-                        // onSubmit={searchSubmitHandler}
+                        onSubmit={searchSubmitHandler}
                         className="w-full text-white flex flex-row align-middle first-line:text-center my-2"
                       >
                         <input
                           type="search"
-                          // onChange={(e) => setSearchQuery(e.target.value)}
+                          onChange={(e) => setSearchQuery(e.target.value)}
                           placeholder="Search for users"
                           className="ml-auto rounded-lg text-center orange-border w-2/6"
                         />
-                        <button
-                          type="submit"
-                          className="cursor-pointer pri-button ml-4 mr-4"
-                        >
-                          Search
-                        </button>
+
+                        {true ? (
+                          <button
+                            type="submit"
+                            className="cursor-pointer pri-button ml-4 mr-4"
+                          >
+                            Search
+                          </button>
+                        ) : (
+                          <button
+                            type="submit"
+                            className="cursor-pointer pri-button ml-4 mr-4"
+                          >
+                            Reset
+                          </button>
+                        )}
                       </form>
                     </div>
 

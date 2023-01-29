@@ -4,9 +4,10 @@ import MiniLoading from "@/components/MiniLoading";
 import { Auth } from "@/utils/Auth";
 import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import Layout from "../../components/Layout";
 import { getError } from "../../utils/error";
+import { Switch } from "@headlessui/react";
 
 function reducer(state: any, action: any) {
   switch (action.type) {
@@ -27,20 +28,35 @@ export default function AdminOrderScreen() {
     orders: [],
     error: "",
   });
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        dispatch({ type: "FETCH_REQUEST" });
-        // await new Promise((resolve) => setTimeout(resolve, 10000));
-        const { data } = await axios.get(`/api/admin/orders`);
-        dispatch({ type: "FETCH_SUCCESS", payload: data });
-      } catch (err) {
-        dispatch({ type: "FETCH_FAIL", payload: getError(err) });
-      }
-    };
-    fetchData();
-  }, []);
+    if (enabled) {
+      const fetchData = async () => {
+        try {
+          dispatch({ type: "FETCH_REQUEST" });
+          const { data } = await axios.get(`/api/admin/orders`, {
+            params: { delivered: "false" },
+          });
+          dispatch({ type: "FETCH_SUCCESS", payload: data });
+        } catch (err) {
+          dispatch({ type: "FETCH_FAIL", payload: getError(err) });
+        }
+      };
+      fetchData();
+    } else {
+      const fetchData = async () => {
+        try {
+          dispatch({ type: "FETCH_REQUEST" });
+          const { data } = await axios.get(`/api/admin/orders`);
+          dispatch({ type: "FETCH_SUCCESS", payload: data });
+        } catch (err) {
+          dispatch({ type: "FETCH_FAIL", payload: getError(err) });
+        }
+      };
+      fetchData();
+    }
+  }, [enabled]);
 
   return (
     <Auth adminOnly>
@@ -59,23 +75,30 @@ export default function AdminOrderScreen() {
                 <>
                   <div className="flex md:hidden text-black flex-col space-y-2 mt-6">
                     <div className="w-full bg-[var(--black)] mb-4 mx-auto flex flex-col rounded-lg">
-                      <form
-                        // onSubmit={searchSubmitHandler}
-                        className="w-full text-white flex flex-row align-middle first-line:text-center my-2 mx-2"
-                      >
-                        <input
-                          type="search"
-                          // onChange={(e) => setSearchQuery(e.target.value)}
-                          placeholder="Search for orders"
-                          className="rounded-lg text-center orange-border w-full"
-                        />
-                        <button
+                      <div className="flex flex-row text-white align-middle justify-between h-full w-[95%] gap-2 mx-auto">
+                        <div className="text-lg font-semibold my-[0.4rem]">
+                          Not Delivered
+                        </div>
+                        <Switch
                           type="submit"
-                          className="cursor-pointer pri-button ml-4 mr-4"
+                          checked={enabled}
+                          onChange={() => {
+                            setEnabled(!enabled);
+                          }}
+                          className={`${
+                            enabled ? "bg-[var(--orange)]" : "bg-[var(--white)]"
+                          } relative inline-flex h-8 w-12 items-center rounded-full my-1`}
                         >
-                          Search
-                        </button>
-                      </form>
+                          <span className="sr-only">Show not delivered</span>
+                          <span
+                            className={`${
+                              enabled
+                                ? "translate-x-5 bg-[var(--white)]"
+                                : "translate-x-1 bg-[var(--orange)]"
+                            } inline-block h-6 w-6 transform rounded-full transition`}
+                          />
+                        </Switch>
+                      </div>
                     </div>
                     {orders.map((order: any) => (
                       <div key={order._id} className="w-full">
@@ -121,23 +144,30 @@ export default function AdminOrderScreen() {
 
                   <div className="overflow-x-auto flex-auto w-full hidden md:inline">
                     <div className="w-[98%] bg-[var(--black)] mb-4 mx-auto flex flex-row rounded-lg">
-                      <form
-                        // onSubmit={searchSubmitHandler}
-                        className="w-full text-white flex flex-row align-middle first-line:text-center my-2"
-                      >
-                        <input
-                          type="search"
-                          // onChange={(e) => setSearchQuery(e.target.value)}
-                          placeholder="Search for orders"
-                          className="ml-auto rounded-lg text-center orange-border w-2/6"
-                        />
-                        <button
+                      <div className="flex flex-row text-white align-middle justify-center gap-2 ml-auto mr-4">
+                        <div className="text-lg font-semibold my-[0.4rem]">
+                          Not Delivered
+                        </div>
+                        <Switch
                           type="submit"
-                          className="cursor-pointer pri-button ml-4 mr-4"
+                          checked={enabled}
+                          onChange={() => {
+                            setEnabled(!enabled);
+                          }}
+                          className={`${
+                            enabled ? "bg-[var(--orange)]" : "bg-[var(--white)]"
+                          } relative inline-flex h-8 w-12 items-center rounded-full my-1`}
                         >
-                          Search
-                        </button>
-                      </form>
+                          <span className="sr-only">Show not delivered</span>
+                          <span
+                            className={`${
+                              enabled
+                                ? "translate-x-5 bg-[var(--white)]"
+                                : "translate-x-1 bg-[var(--orange)]"
+                            } inline-block h-6 w-6 transform rounded-full transition`}
+                          />
+                        </Switch>
+                      </div>
                     </div>
                     <table className="min-w-full">
                       <thead className="border-b w-full">

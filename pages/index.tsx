@@ -63,7 +63,7 @@ export default function Home() {
     <>
       {/* Image Gallery Showcase */}
       <IntroGallery />
-      <Layout title="GCE: Home">
+      <Layout title="Home">
         <div className="w-full">
           {/* Intro Products Showcase */}
           <div className="bg-[var(--white)] w-full flex flex-row gap-1 justify-center align-middle rounded-lg overflow-hidden">

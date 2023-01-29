@@ -13,11 +13,23 @@ export default function Layout({ title, children }: LayoutProps) {
     <>
       <Head>
         <title>{title ? title + " - GCE" : "Great Comcat Engineering"}</title>
+        <meta name="description" content="Great Comcat Engineering LTD - GCE" />
         <meta
-          name="description"
-          content="Website of Great Comcat Engineering LTD"
-        />
+          name="keywords"
+          content="GCE, Great Comcat Engineering, Nocxa, Machine"
+        ></meta>
+        <meta
+          property="og:title"
+          content="Great Comcat Engineering LTD - GCE"
+        ></meta>
+        <meta name="author" content="Nocxa LTD - https://nocxa.com"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+        <meta
+          name="apple-mobile-web-app-title"
+          content="Great Comcat Engineering"
+        ></meta>
+        <link rel="apple-touch-icon" href="/logo/logo.svg"></link>
         <link rel="icon" href="/logo/logo_circle.svg" />
       </Head>
 

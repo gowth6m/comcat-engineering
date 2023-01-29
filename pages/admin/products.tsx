@@ -2,7 +2,7 @@ import MiniLoading from "@/components/MiniLoading";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import toast from "react-hot-toast";
 import AdminDashNav from "../../components/AdminDashNav";
 import Layout from "../../components/Layout";
@@ -38,6 +38,7 @@ function reducer(state: any, action: any) {
 }
 export default function AdminProdcutsScreen() {
   const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState("");
 
   const [
     { loading, error, products, loadingCreate, successDelete, loadingDelete },
@@ -63,6 +64,29 @@ export default function AdminProdcutsScreen() {
       toast.error(getError(err));
     }
   };
+
+  function searchSubmitHandler(e: any) {
+    e.preventDefault();
+
+    const fetchData = async () => {
+      try {
+        dispatch({ type: "FETCH_REQUEST" });
+        const { data } = await axios.get(`/api/admin/products`, {
+          params: { search: searchQuery },
+        });
+        dispatch({ type: "FETCH_SUCCESS", payload: data });
+      } catch (err) {
+        dispatch({ type: "FETCH_FAIL", payload: getError(err) });
+      }
+    };
+    if (successDelete) {
+      dispatch({ type: "DELETE_RESET" });
+    } else {
+      fetchData();
+    }
+    setSearchQuery("");
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -120,12 +144,12 @@ export default function AdminProdcutsScreen() {
                         Create Product
                       </button>
                       <form
-                        // onSubmit={searchSubmitHandler}
+                        onSubmit={searchSubmitHandler}
                         className="w-full text-white flex flex-row align-middle first-line:text-center my-2 mx-2"
                       >
                         <input
                           type="search"
-                          // onChange={(e) => setSearchQuery(e.target.value)}
+                          onChange={(e) => setSearchQuery(e.target.value)}
                           placeholder="Search for products"
                           className="rounded-lg text-center orange-border w-full"
                         />
@@ -186,12 +210,12 @@ export default function AdminProdcutsScreen() {
                         Create
                       </button>
                       <form
-                        // onSubmit={searchSubmitHandler}
+                        onSubmit={searchSubmitHandler}
                         className="w-full text-white flex flex-row align-middle first-line:text-center my-2"
                       >
                         <input
                           type="search"
-                          // onChange={(e) => setSearchQuery(e.target.value)}
+                          onChange={(e) => setSearchQuery(e.target.value)}
                           placeholder="Search for products"
                           className="ml-auto rounded-lg text-center orange-border w-2/6"
                         />

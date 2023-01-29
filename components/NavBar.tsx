@@ -151,7 +151,7 @@ export default function NavBar() {
             {menuList.map((item) => (
               <Link
                 key={item.name}
-                href={`/${item.href}`}
+                href={item.href}
                 className="p-2 hover:text-[var(--orange)] text-white"
               >
                 {item.name}
@@ -199,7 +199,7 @@ export default function NavBar() {
               {menuList.map((item) => (
                 <Link
                   key={item.name}
-                  href={`/${item.href}`}
+                  href={item.href}
                   className="p-3 hover:text-[var(--orange)] text-white"
                 >
                   {item.name}

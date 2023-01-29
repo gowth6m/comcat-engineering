@@ -5,9 +5,8 @@ import db from "../../../../utils/db";
 const handler = async (req: any, res: any) => {
     const session: any = await getSession({ req });
     if (!session || !session.user.isAdmin) {
-        return res.status(401).send("admin signin required");
+        return res.status(401).send("admin login required");
     }
-    //   const { user } = session;
     if (req.method === "GET") {
         return getHandler(req, res);
     } else if (req.method === "POST") {
@@ -36,9 +35,22 @@ const postHandler = async (req: any, res: any) => {
     await db.disconnect();
     res.send({ message: "Product created successfully", product });
 };
+
 const getHandler = async (req: any, res: any) => {
     await db.connect();
-    const products = await Product.find({});
+    var products: any;
+
+    if (req.query.search) {
+        products = await Product.find({
+            name: {
+                $regex: req.query.search,
+                $options: 'i',
+            }
+        });
+    } else {
+        products = await Product.find({});
+    }
+
     await db.disconnect();
     res.send(products);
 };

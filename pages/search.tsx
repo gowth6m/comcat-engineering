@@ -220,7 +220,7 @@ export default function Search(props: any) {
               price !== "all" ? (
                 <button
                   onClick={() => router.push("/search")}
-                  className="bg-[var(--orange)] rounded-full"
+                  className="bg-[var(--orange)] rounded-full mx-4 md:mx-1"
                 >
                   <IconMenu
                     open={true}
