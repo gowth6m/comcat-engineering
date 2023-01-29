@@ -253,7 +253,7 @@ export default function Search(props: any) {
                 />
               ))}
             </div>
-            <ul className="flex my-4">
+            <ul className="flex my-4 md:my-1">
               {products.length > 0 &&
                 Array.from(Array(pages).keys()).map((pageNumber) => (
                   <li key={pageNumber}>
