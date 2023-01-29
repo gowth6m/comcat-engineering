@@ -110,7 +110,33 @@ export default function AdminProdcutsScreen() {
                 <div className="alert-error">{error}</div>
               ) : (
                 <>
-                  <div className="flex md:hidden text-black flex-col space-y-2 mt-8">
+                  <div className="flex md:hidden text-black flex-col space-y-2 mt-6">
+                    <div className="w-full bg-[var(--black)] mb-4 mx-auto flex flex-col rounded-lg">
+                      <button
+                        className="pri-button my-2 mx-2 cursor-pointer"
+                        disabled={loadingCreate}
+                        onClick={createHandler}
+                      >
+                        Create Product
+                      </button>
+                      <form
+                        // onSubmit={searchSubmitHandler}
+                        className="w-full text-white flex flex-row align-middle first-line:text-center my-2 mx-2"
+                      >
+                        <input
+                          type="search"
+                          // onChange={(e) => setSearchQuery(e.target.value)}
+                          placeholder="Search for products"
+                          className="rounded-lg text-center orange-border w-full"
+                        />
+                        <button
+                          type="submit"
+                          className="cursor-pointer pri-button ml-4 mr-4"
+                        >
+                          Search
+                        </button>
+                      </form>
+                    </div>
                     {products.map((product: any) => (
                       <div key={product._id} className="w-full">
                         <div className="flex flex-row">
@@ -151,13 +177,38 @@ export default function AdminProdcutsScreen() {
                   </div>
 
                   <div className="overflow-x-auto flex-auto w-full hidden md:inline">
+                    <div className="w-[98%] bg-[var(--black)] mb-4 mx-auto flex flex-row rounded-lg">
+                      <button
+                        className="pri-button ml-4 my-2 cursor-pointer"
+                        disabled={loadingCreate}
+                        onClick={createHandler}
+                      >
+                        Create
+                      </button>
+                      <form
+                        // onSubmit={searchSubmitHandler}
+                        className="w-full text-white flex flex-row align-middle first-line:text-center my-2"
+                      >
+                        <input
+                          type="search"
+                          // onChange={(e) => setSearchQuery(e.target.value)}
+                          placeholder="Search for products"
+                          className="ml-auto rounded-lg text-center orange-border w-2/6"
+                        />
+                        <button
+                          type="submit"
+                          className="cursor-pointer pri-button ml-4 mr-4"
+                        >
+                          Search
+                        </button>
+                      </form>
+                    </div>
                     <table className="min-w-full">
                       <thead className="bproduct-b">
                         <tr>
                           <th className={cssTH}>ID</th>
                           <th className={cssTH}>USER</th>
                           <th className={cssTH}>PRICE</th>
-
                           <th className={cssTH}>COUNT</th>
                           <th className={cssTH}>RATING</th>
                           <th className={cssTH}>ACTION</th>
@@ -166,16 +217,18 @@ export default function AdminProdcutsScreen() {
                       <tbody>
                         {products.map((product: any) => (
                           <tr key={product._id} className="bproduct-b">
-                            <td className="p-5">
+                            <td className="py-4 px-5">
                               {product._id.substring(20, 24)}
                             </td>
-                            <td className="p-5">{product.name}</td>
-                            <td className="p-5">
+                            <td className="py-4 px-5">{product.name}</td>
+                            <td className="py-4 px-5">
                               £{product.price.toLocaleString("en", options)}
                             </td>
-                            <td className="p-5">{product.countInStock}</td>
-                            <td className="p-5">{product.rating}</td>
-                            <td className="p-5 flex gap-2">
+                            <td className="py-4 px-5">
+                              {product.countInStock}
+                            </td>
+                            <td className="py-4 px-5">{product.rating}</td>
+                            <td className="py-4 px-5 flex gap-2">
                               <Link
                                 className="pri-button"
                                 href={`/admin/product/${product._id}`}

@@ -57,7 +57,26 @@ export default function AdminOrderScreen() {
                 <div className="alert-error">{error}</div>
               ) : (
                 <>
-                  <div className="flex md:hidden text-black flex-col space-y-2 mt-8">
+                  <div className="flex md:hidden text-black flex-col space-y-2 mt-6">
+                    <div className="w-full bg-[var(--black)] mb-4 mx-auto flex flex-col rounded-lg">
+                      <form
+                        // onSubmit={searchSubmitHandler}
+                        className="w-full text-white flex flex-row align-middle first-line:text-center my-2 mx-2"
+                      >
+                        <input
+                          type="search"
+                          // onChange={(e) => setSearchQuery(e.target.value)}
+                          placeholder="Search for orders"
+                          className="rounded-lg text-center orange-border w-full"
+                        />
+                        <button
+                          type="submit"
+                          className="cursor-pointer pri-button ml-4 mr-4"
+                        >
+                          Search
+                        </button>
+                      </form>
+                    </div>
                     {orders.map((order: any) => (
                       <div key={order._id} className="w-full">
                         <div className="flex flex-row">
@@ -101,6 +120,25 @@ export default function AdminOrderScreen() {
                   </div>
 
                   <div className="overflow-x-auto flex-auto w-full hidden md:inline">
+                    <div className="w-[98%] bg-[var(--black)] mb-4 mx-auto flex flex-row rounded-lg">
+                      <form
+                        // onSubmit={searchSubmitHandler}
+                        className="w-full text-white flex flex-row align-middle first-line:text-center my-2"
+                      >
+                        <input
+                          type="search"
+                          // onChange={(e) => setSearchQuery(e.target.value)}
+                          placeholder="Search for orders"
+                          className="ml-auto rounded-lg text-center orange-border w-2/6"
+                        />
+                        <button
+                          type="submit"
+                          className="cursor-pointer pri-button ml-4 mr-4"
+                        >
+                          Search
+                        </button>
+                      </form>
+                    </div>
                     <table className="min-w-full">
                       <thead className="border-b">
                         <tr>
