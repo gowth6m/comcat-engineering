@@ -183,21 +183,12 @@ function AdminUsersScreen() {
                           className="ml-auto rounded-lg text-center orange-border w-2/6"
                         />
 
-                        {true ? (
-                          <button
-                            type="submit"
-                            className="cursor-pointer pri-button ml-4 mr-4"
-                          >
-                            Search
-                          </button>
-                        ) : (
-                          <button
-                            type="submit"
-                            className="cursor-pointer pri-button ml-4 mr-4"
-                          >
-                            Reset
-                          </button>
-                        )}
+                        <button
+                          type="submit"
+                          className="cursor-pointer pri-button ml-4 mr-4"
+                        >
+                          Search
+                        </button>
                       </form>
                     </div>
 
