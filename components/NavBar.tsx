@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import NavProfileMenu from "./NavProfileMenu";
 import { Store } from "@/utils/Store";
 import GCELogo from "./GCELogo";
+import router from "next/router";
 
 export default function NavBar() {
   const [menuOpened, setMenuOpened] = useState(false);
@@ -14,12 +15,18 @@ export default function NavBar() {
   const menuList = ["Home", "Categories", "My Account", "About", "Contact"];
   const currencyDropdown = ["GBP", "EUR", "USD", "CAD"];
   const { state, dispatchStore } = useContext(Store);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     setCartItemsCount(
       state.cart.cartItems.reduce((a: any, c: any) => a + c.qty, 0)
     );
   }, [cartItemsCount, state.cart.cartItems]);
+
+  const searchSubmitHandler = (e: any) => {
+    e.preventDefault();
+    router.push(`/search?query=${searchQuery}`);
+  };
 
   return (
     <>
@@ -83,12 +90,12 @@ export default function NavBar() {
               {/* SEARCH BAR */}
               <div className="hidden md:flex">
                 <form
-                  //   onSubmit={searchSubmitHandler}
+                  onSubmit={searchSubmitHandler}
                   className="w-full text-white flex flex-row justify-center align-middle first-line:text-center"
                 >
                   <input
                     type="search"
-                    // onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search for products"
                     className="w-full rounded-lg text-white px-2 py-2 text-center mr-1 orange-border"
                   />
@@ -155,12 +162,12 @@ export default function NavBar() {
             animate={searchOpended ? "transform" : "stop"}
           >
             <form
-              // onSubmit={searchSubmitHandler}
+              onSubmit={searchSubmitHandler}
               className="w-full text-white flex flex-col justify-center align-middle first-line:text-center"
             >
               <input
                 type="search"
-                // onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search for products"
                 className="mx-auto rounded-lg text-center orange-border w-5/6"
                 autoFocus

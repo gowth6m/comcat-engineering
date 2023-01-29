@@ -228,9 +228,9 @@ export default function AdminProdcutsScreen() {
                               {product.countInStock}
                             </td>
                             <td className="py-4 px-5">{product.rating}</td>
-                            <td className="py-4 px-5 flex gap-2">
+                            <td className="py-4 px-5 flex gap-2 w-full">
                               <Link
-                                className="pri-button"
+                                className="pri-button-wide"
                                 href={`/admin/product/${product._id}`}
                               >
                                 Edit
@@ -238,7 +238,7 @@ export default function AdminProdcutsScreen() {
 
                               <button
                                 onClick={() => deleteHandler(product._id)}
-                                className="pri-button"
+                                className="pri-button-wide"
                                 type="button"
                               >
                                 Delete

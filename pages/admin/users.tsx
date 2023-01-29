@@ -191,14 +191,14 @@ function AdminUsersScreen() {
                             </td>
                             <td className=" py-3 px-5 flex gap-2">
                               <Link
-                                className="pri-button"
+                                className="pri-button-wide"
                                 href={`/admin/user/${user._id}`}
                               >
                                 Edit
                               </Link>
                               <button
                                 type="button"
-                                className="pri-button"
+                                className="pri-button-wide"
                                 onClick={() => deleteHandler(user._id)}
                               >
                                 Delete

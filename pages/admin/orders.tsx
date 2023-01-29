@@ -140,7 +140,7 @@ export default function AdminOrderScreen() {
                       </form>
                     </div>
                     <table className="min-w-full">
-                      <thead className="border-b">
+                      <thead className="border-b w-full">
                         <tr>
                           <th className={cssTH}>ID</th>
                           <th className={cssTH}>USER</th>
@@ -153,7 +153,7 @@ export default function AdminOrderScreen() {
                       </thead>
                       <tbody>
                         {orders.map((order: any) => (
-                          <tr key={order._id} className="border-b">
+                          <tr key={order._id} className="border-b w-full">
                             <td className="p-5">
                               {order._id.substring(20, 24)}
                             </td>
@@ -179,7 +179,7 @@ export default function AdminOrderScreen() {
                             <td className="p-5">
                               <Link
                                 href={`/order/${order._id}`}
-                                className="pri-button"
+                                className="pri-button-wide"
                                 passHref
                               >
                                 Details
