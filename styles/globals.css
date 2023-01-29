@@ -129,7 +129,7 @@ textarea:focus, input:focus {
 select {
   background-color: var(--white);
   border: var(--black) 1px solid;
-  @apply rounded-xl p-2 outline-none ring-[var(--black)] focus:ring text-black;
+  @apply rounded-xl p-2 outline-none text-black;
 }
 
 @media (prefers-color-scheme: dark) {
