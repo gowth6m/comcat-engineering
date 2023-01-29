@@ -45,7 +45,7 @@ export default function NavProfileMenu() {
           <Link href={"/profile"} className="navProfileMenuButtons mb-4">
             <IconUser fill={"white"} />
             {session?.user ? (
-              <div className="ml-6">Profile ({currentUserInitials})</div>
+              <div className="ml-6">Profile &#x2022; {currentUserInitials}</div>
             ) : (
               <div className="ml-6">Profile</div>
             )}
