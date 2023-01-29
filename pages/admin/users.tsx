@@ -167,7 +167,7 @@ function AdminUsersScreen() {
                     ))}
                   </div>
 
-                  <div className="overflow-x-auto flex-auto w-full hidden md:inline">
+                  <div className="overflow-x-auto flex-auto w-full hidden md:block md:mx-2">
                     <div className="w-[98%] bg-[var(--black)] mb-4 mx-auto flex flex-row rounded-lg">
                       <button className="pri-button ml-4 my-2 cursor-pointer">
                         Create
