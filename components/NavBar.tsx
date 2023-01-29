@@ -116,7 +116,7 @@ export default function NavBar() {
                 {/* DESKTOP: PROFILE MENU */}
                 {profileMenuOpened && (
                   <motion.div
-                    className="w-70 h-auto bg-[var(--orange)] z-50 absolute ml-[-10rem] mt-10 rounded-lg origin-top"
+                    className="w-[16rem] h-auto bg-[var(--orange)] z-50 absolute ml-[-12rem] mt-10 rounded-lg origin-top"
                     variants={variants}
                     animate={profileMenuOpened ? "transform" : "stop"}
                   >
