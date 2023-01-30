@@ -111,9 +111,9 @@ function AdminUsersScreen() {
                 <>
                   <div className="flex md:hidden text-black flex-col space-y-2 mt-6">
                     <div className="w-full bg-[var(--black)] mb-4 mx-auto flex flex-col rounded-lg">
-                      <button className="pri-button my-2 mx-2 cursor-pointer">
+                      {/* <button className="pri-button my-2 mx-2 cursor-pointer">
                         Create User
-                      </button>
+                      </button> */}
                       <form
                         onSubmit={searchSubmitHandler}
                         className="w-full text-white flex flex-row align-middle first-line:text-center my-2 mx-2"
@@ -169,9 +169,9 @@ function AdminUsersScreen() {
 
                   <div className="overflow-x-auto flex-auto w-full hidden md:block md:mx-2">
                     <div className="w-[98%] bg-[var(--black)] mb-4 mx-auto flex flex-row rounded-lg">
-                      <button className="pri-button ml-4 my-2 cursor-pointer">
+                      {/* <button className="pri-button ml-4 my-2 cursor-pointer">
                         Create
-                      </button>
+                      </button> */}
                       <form
                         onSubmit={searchSubmitHandler}
                         className="w-full text-white flex flex-row align-middle first-line:text-center my-2"
