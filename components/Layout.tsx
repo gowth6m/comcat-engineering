@@ -25,6 +25,12 @@ export default function Layout({ title, children }: LayoutProps) {
           property="og:title"
           content="Great Comcat Engineering LTD - GCE"
         ></meta>
+        <meta
+          property="og:description"
+          content="Great Comcat Engineering is a commercial machinery company based in London, UK - offering only the best to our customers."
+        ></meta>
+        <meta property="og:url" content="https://greatcomcatengineering.com/"></meta>
+        <meta property="og:site_name" content="Great Comcat Engineering"></meta>
         <meta name="author" content="Nocxa LTD - https://nocxa.com"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="apple-mobile-web-app-capable" content="yes"></meta>
