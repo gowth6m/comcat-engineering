@@ -25,7 +25,7 @@ export default function NavProfileMenu() {
   };
 
   const currentUser = session?.user ? session?.user.name : "Guest";
-  const currentUserInitials = currentUser.split(" ").map((n: any) => n[0]);
+  const currentUserInitials = currentUser.split(" ").map((n: any) => n[0])[0];
 
   return (
     <div className="flex align-middle justify-middle flex-col m-4">
