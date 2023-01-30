@@ -1,16 +1,11 @@
 import Layout from "@/components/Layout";
 import { Auth } from "@/utils/Auth";
 import { useSession } from "next-auth/react";
-import router from "next/router";
-import Router from "next/router";
+// import router from "next/router";
 import React from "react";
 
 export default function AccountScreen() {
   const { data: session }: any = useSession();
-
-  if (!session?.user) {
-    router.push("/login");
-  }
 
   return (
     <Auth>
