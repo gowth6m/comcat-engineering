@@ -203,7 +203,7 @@ export default function AdminProdcutsScreen() {
                   <div className="overflow-x-auto flex-auto w-full hidden md:block md:mx-2">
                     <div className="w-[98%] bg-[var(--black)] mb-4 mx-auto flex flex-row rounded-lg">
                       <button
-                        className="pri-button ml-4 my-2 cursor-pointer"
+                        className="ml-4 cursor-pointer bg-[var(--orange)] text-white rounded-lg px-4 py-0 my-1"
                         disabled={loadingCreate}
                         onClick={createHandler}
                       >
@@ -211,17 +211,17 @@ export default function AdminProdcutsScreen() {
                       </button>
                       <form
                         onSubmit={searchSubmitHandler}
-                        className="w-full text-white flex flex-row align-middle first-line:text-center my-2"
+                        className="w-full text-white flex flex-row align-middle first-line:text-center"
                       >
                         <input
                           type="search"
                           onChange={(e) => setSearchQuery(e.target.value)}
                           placeholder="Search for products"
-                          className="ml-auto rounded-lg text-center orange-border w-2/6"
+                          className="ml-auto rounded-lg text-center orange-border w-2/6 my-1 py-1"
                         />
                         <button
                           type="submit"
-                          className="cursor-pointer pri-button ml-4 mr-4"
+                          className="cursor-pointer bg-[var(--orange)] text-white rounded-lg ml-4 mr-4 my-1 py-0 px-4"
                         >
                           Search
                         </button>

@@ -145,7 +145,7 @@ export default function AdminOrderScreen() {
                   <div className="overflow-x-auto flex-auto w-full hidden md:block md:mx-2">
                     <div className="w-[98%] bg-[var(--black)] mb-4 mx-auto flex flex-row rounded-lg">
                       <div className="flex flex-row text-white align-middle justify-center gap-2 ml-auto mr-4">
-                        <div className="text-lg font-semibold my-[0.4rem]">
+                        <div className="font-semibold my-[0.5rem]">
                           Not Delivered
                         </div>
                         <Switch
@@ -156,15 +156,15 @@ export default function AdminOrderScreen() {
                           }}
                           className={`${
                             enabled ? "bg-[var(--orange)]" : "bg-[var(--white)]"
-                          } relative inline-flex h-8 w-12 items-center rounded-full my-1`}
+                          } relative inline-flex h-6 w-12 items-center rounded-full my-2`}
                         >
                           <span className="sr-only">Show not delivered</span>
                           <span
                             className={`${
                               enabled
-                                ? "translate-x-5 bg-[var(--white)]"
+                                ? "translate-x-6 bg-[var(--white)]"
                                 : "translate-x-1 bg-[var(--orange)]"
-                            } inline-block h-6 w-6 transform rounded-full transition`}
+                            } inline-block h-5 w-5 transform rounded-full transition`}
                           />
                         </Switch>
                       </div>

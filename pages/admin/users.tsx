@@ -174,18 +174,18 @@ function AdminUsersScreen() {
                       </button> */}
                       <form
                         onSubmit={searchSubmitHandler}
-                        className="w-full text-white flex flex-row align-middle first-line:text-center my-2"
+                        className="w-full text-white flex flex-row align-middle first-line:text-center"
                       >
                         <input
                           type="search"
                           onChange={(e) => setSearchQuery(e.target.value)}
                           placeholder="Search for users"
-                          className="ml-auto rounded-lg text-center orange-border w-2/6"
+                          className="ml-auto rounded-lg text-center orange-border w-2/6 my-1 py-1"
                         />
 
                         <button
                           type="submit"
-                          className="cursor-pointer pri-button ml-4 mr-4"
+                          className="cursor-pointer bg-[var(--orange)] text-white rounded-lg ml-4 mr-4 my-1 py-0 px-4"
                         >
                           Search
                         </button>
