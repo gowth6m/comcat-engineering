@@ -36,7 +36,7 @@ export default function NavBar() {
 
   return (
     <>
-      <div className="z-50 fixed flex flex-col top-0 w-full">
+      <div className="z-50 fixed flex flex-col top-0 w-full text-white">
         <nav className="w-full flex h-14  mx-0 justify-between items-center bg-[var(--black)]">
           <div className="z-50 flex h-14  mx-auto justify-between items-center bg-[var(--black)] container">
             {/* TOGGLE NAV BUTTON */}

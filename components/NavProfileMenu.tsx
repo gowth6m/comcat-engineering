@@ -28,7 +28,7 @@ export default function NavProfileMenu() {
   const currentUserInitials = currentUser.split(" ").map((n: any) => n[0]);
 
   return (
-    <div className="flex align-middle justify-middle flex-col m-4">
+    <div className="flex align-middle justify-middle flex-col m-4 text-white">
       {!session?.user ? (
         <>
           <Link href={"/login"} className="navProfileMenuButtons mb-4">
