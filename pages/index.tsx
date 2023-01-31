@@ -11,6 +11,7 @@ import axios from "axios";
 import ProductItem from "@/components/ProductItem";
 import MiniLoading from "@/components/MiniLoading";
 import { customToast } from "@/utils/customToast";
+import LoadingProductItem from "@/components/LoadingProductItem";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +32,7 @@ export default function Home() {
     const fetchProducts = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        // await new Promise((resolve) => setTimeout(resolve, 10000));
+        // await new Promise((resolve) => setTimeout(resolve, 5000));
         const { data } = await axios.get(`/api/products/all`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
@@ -89,11 +90,17 @@ export default function Home() {
           {/* Intro Products Showcase */}
           <div className="w-full h-auto mt-4 rounded-lg">
             {loading ? (
-              <MiniLoading />
+              // <MiniLoading />
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-6 w-full mb-4">
+                {Array.from({ length: 10 }).map((i: any, index: any) => {
+                  return <LoadingProductItem key={index} />;
+                })}
+              </div>
             ) : (
               <>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-6 w-full mb-4">
                   {prod.map((product: any) => {
+                    // return <LoadingProductItem key={product} />;
                     return (
                       <ProductItem
                         key={product.slug}
