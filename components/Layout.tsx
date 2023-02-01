@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import { Toaster } from "react-hot-toast";
+import Footer from "./Footer";
 import NavBar from "./NavBar";
 
 type LayoutProps = {
@@ -29,7 +30,10 @@ export default function Layout({ title, children }: LayoutProps) {
           property="og:description"
           content="Great Comcat Engineering is a commercial machinery company based in London, UK - offering only the best to our customers."
         ></meta>
-        <meta property="og:url" content="https://greatcomcatengineering.com/"></meta>
+        <meta
+          property="og:url"
+          content="https://greatcomcatengineering.com/"
+        ></meta>
         <meta property="og:site_name" content="Great Comcat Engineering"></meta>
         <meta name="author" content="Nocxa LTD - https://nocxa.com"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -59,8 +63,8 @@ export default function Layout({ title, children }: LayoutProps) {
         </main>
 
         {/* FOOTER */}
-        <footer className="flex h-20 justify-center items-center bg-[var(--orange)] text-white">
-          <p>Copyright &#169; 2022 Great Comcat Engineering</p>
+        <footer className="flex h-auto justify-center items-center bg-[var(--black)] text-white">
+          <Footer />
         </footer>
       </div>
     </>

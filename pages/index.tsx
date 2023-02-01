@@ -90,9 +90,8 @@ export default function Home() {
           {/* Intro Products Showcase */}
           <div className="w-full h-auto mt-4 rounded-lg">
             {loading ? (
-              // <MiniLoading />
               <div className="grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-6 w-full mb-4">
-                {Array.from({ length: 10 }).map((i: any, index: any) => {
+                {Array.from({ length: 12 }).map((i: any, index: any) => {
                   return <LoadingProductItem key={index} />;
                 })}
               </div>
@@ -100,7 +99,6 @@ export default function Home() {
               <>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-6 w-full mb-4">
                   {prod.map((product: any) => {
-                    // return <LoadingProductItem key={product} />;
                     return (
                       <ProductItem
                         key={product.slug}
