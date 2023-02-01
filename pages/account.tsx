@@ -25,47 +25,29 @@ export default function AccountScreen() {
           </div>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3 mt-4">
-            <Link
-              href="/order-history"
-              className="hover:bg-[var(--orange)] border-2 border-[var(--orange)] rounded-lg w-full flex items-center justify-center gap-4"
-            >
+            <Link href="/order-history" className={cssLink}>
               <IconCart />
-              <div className="text-lg text-black hover:text-white py-10">Your Orders</div>
+              <div className={cssLinkInner}>Your Orders</div>
             </Link>
-            <Link
-              href="/profile"
-              className="hover:bg-[var(--orange)] border-2 border-[var(--orange)] rounded-lg w-full flex items-center justify-center gap-4"
-            >
+            <Link href="/profile" className={cssLink}>
               <IconUser />
-              <div className="text-lg text-black py-10">Edit Profile</div>
+              <div className={cssLinkInner}>Edit Profile</div>
             </Link>
-            <Link
-              href="/"
-              className="hover:bg-[var(--orange)] border-2 border-[var(--orange)] rounded-lg w-full flex items-center justify-center gap-4"
-            >
+            <Link href="/" className={cssLink}>
               <IconMoney />
-              <div className="text-lg text-black py-10">Your Payment</div>
+              <div className={cssLinkInner}>Your Payment</div>
             </Link>
-            <Link
-              href="/"
-              className="hover:bg-[var(--orange)] border-2 border-[var(--orange)] rounded-lg w-full flex items-center justify-center gap-4"
-            >
+            <Link href="/" className={cssLink}>
               <IconLocation />
-              <div className="text-lg text-black py-10">Your Addresses</div>
+              <div className={cssLinkInner}>Your Addresses</div>
             </Link>
-            <Link
-              href="/about"
-              className="hover:bg-[var(--orange)] border-2 border-[var(--orange)] rounded-lg w-full flex items-center justify-center gap-4"
-            >
+            <Link href="/about" className={cssLink}>
               <IconAbout />
-              <div className="text-lg text-black py-10">About Us</div>
+              <div className={cssLinkInner}>About Us</div>
             </Link>
-            <Link
-              href="/contact"
-              className="hover:bg-[var(--orange)] border-2 border-[var(--orange)] rounded-lg w-full flex items-center justify-center gap-4"
-            >
+            <Link href="/contact" className={cssLink}>
               <IconEmail />
-              <div className="text-lg text-black py-10">Contact Us</div>
+              <div className={cssLinkInner}>Contact Us</div>
             </Link>
           </div>
         </div>
@@ -73,3 +55,7 @@ export default function AccountScreen() {
     </Auth>
   );
 }
+
+const cssLink =
+  "hover:bg-[var(--orange)] border-2 border-[var(--orange)] rounded-lg w-full flex items-center justify-center gap-4";
+const cssLinkInner = "text-lg text-black py-4 md:py-12";

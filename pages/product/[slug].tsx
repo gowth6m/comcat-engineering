@@ -15,7 +15,13 @@ export default function ProductScreen(props: any) {
   const { state, dispatchStore } = useContext(Store);
 
   if (!product) {
-    return <Layout title="Product not found">Product not found</Layout>;
+    return (
+      <Layout title="Product not found">
+        <div className="flex items-center justify-center">
+          <div className="text-4xl text-[var(--orange)]">Product not found</div>
+        </div>
+      </Layout>
+    );
   }
 
   // adding items to cart

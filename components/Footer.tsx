@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { IconPaypal } from "./CustomIcons";
 import GCELogo from "./GCELogo";
 import NocxaLogo from "./NocxaLogo";
 
@@ -11,7 +12,13 @@ export default function Footer() {
         <div className="h-full my-[-10px] mt-[-25px]">
           <GCELogo className="w-[120px]" />
         </div>
-        <div className=""> 2022 &#169; <span className="text-[var(--orange)]">Great Comcat Engineering LTD</span></div>
+        <div className="">
+          {" "}
+          2022 &#169;{" "}
+          <span className="text-[var(--orange)]">
+            Great Comcat Engineering LTD
+          </span>
+        </div>
       </div>
 
       {/* Middle Links */}
@@ -47,22 +54,23 @@ export default function Footer() {
 
       {/* Socials */}
       <div className="w-full h-auto flex flex-col my-4 text-center items-center justify-center gap-4">
-        <div>
-          Call us now
+        <div className="">
+          Call us now on
           <Link href="/" className="text-[var(--orange)]">
             {" "}
             +44 123 456 789
           </Link>
         </div>
+
         <div>
-          Website by
+          Website created by
           <Link
             href="https://nocxa.com"
             target="blank"
-            className="text-[var(--orange)] my-[-10px]"
+            className="text-[var(--orange)] my-[-10px] text-center"
           >
             <NocxaLogo
-              className="w-[120px] my-[-5px]"
+              className="w-[120px] my-[-5px] mx-auto"
               secondaryColor={"#FC814A"}
             />
           </Link>
