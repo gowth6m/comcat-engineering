@@ -115,6 +115,8 @@ export default function AdminProductEditScreen() {
     countInStock,
     description,
   }: any) => {
+    category = category.split(",");
+
     try {
       dispatch({ type: "UPDATE_REQUEST" });
       await axios.put(`/api/admin/products/${productId}`, {
