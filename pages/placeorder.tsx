@@ -65,7 +65,7 @@ export default function PlaceOrderScreen() {
           // Empty Cart Component
           <EmptyCart />
         ) : (
-          <div className="flex flex-col md:flex-row w-full justify-center align-middle text-black h-full">
+          <div className="flex flex-col md:flex-row w-full justify-center align-middle text-black h-full mb-4">
             <div className="flex flex-col w-full md:w-2/6 h-full align-middle justify-center">
               {/* Address */}
               <div className="flex flex-col p-4 mb-4 md:mr-4 border-2 border-[var(--orange)] rounded-lg">
