@@ -33,7 +33,7 @@ export default function CategoriesScreen() {
 
   return (
     <Layout title="Categories">
-      <div className="w-5/6 mx-auto">
+      <div className="md:w-5/6 mx-auto">
         <div className="heading1 mt-2 md:mt-4">Categories</div>
 
         <div>
@@ -52,7 +52,7 @@ export default function CategoriesScreen() {
                     href={"/category/" + category}
                     className="text-black text-lg orange-border rounded-lg hover:bg-[var(--orange)] hover:text-white"
                   >
-                    <div className="text-center px-4 py-8">{category}</div>
+                    <div className="text-center px-4 py-4 md:py-8">{category}</div>
                   </Link>
                 );
               })}

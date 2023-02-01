@@ -10,6 +10,7 @@
   --lightgrey: #bebebe;
   --white: #EAEAEA;
   --orange: #FC814A;
+  --darkerorange: #fa631c;
 }
 
 :root {
@@ -146,21 +147,21 @@ select {
 
 .pri-button {
   border: 2px solid var(--orange);
-  @apply bg-[var(--orange)] text-white font-bold py-2 px-8 rounded-lg hover:bg-[var(--black)] hover:text-[var(--orange)] text-center;
+  @apply bg-[var(--orange)] text-white font-bold py-2 px-8 rounded-lg hover:bg-[var(--darkerorange)] hover:border-[var(--darkerorange)] text-center;
 }
 
 .pri-button-wide {
   border: 2px solid var(--orange);
-  @apply bg-[var(--orange)] text-white font-bold py-2 px-8 rounded-lg w-full hover:bg-[var(--black)] hover:text-[var(--orange)] text-center;
+  @apply bg-[var(--orange)] text-white font-bold py-2 px-8 rounded-lg w-full hover:bg-[var(--darkerorange)] hover:border-[var(--darkerorange)] text-center;
 }
 
 .sec-button {
   border: 2px solid var(--orange);
-  @apply text-[var(--orange)] font-bold py-2 px-8 rounded-lg border-2 border-[var(--orange)] border-solid hover:bg-[var(--orange)] hover:text-[var(--white)] text-center;
+  @apply text-[var(--orange)] font-bold py-2 px-8 rounded-lg border-2 border-[var(--orange)] border-solid hover:bg-[var(--darkerorange)] hover:border-[var(--darkerorange)] hover:text-[var(--white)] text-center;
 }
 
 .navProfileMenuButtons {
-  @apply border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl cursor-pointer hover:bg-[var(--orange)] md:hover:bg-[var(--black)] text-center;
+  @apply border-white border-solid border-2 p-4 flex flex-row justify-start rounded-xl cursor-pointer hover:bg-[var(--darkerorange)] md:hover:bg-[var(--black)] text-center;
 }
 
 .orange-border {
