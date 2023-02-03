@@ -81,9 +81,8 @@ export default function ProductItem({
           duration: 1,
           delay: 0,
         }}
-        viewport={{ once: true }}
         initial="offscreen"
-        whileInView="onscreen"
+        animate="onscreen"
         variants={itemVariants}
       >
         <div className="flex flex-col w-full h-full m-2">

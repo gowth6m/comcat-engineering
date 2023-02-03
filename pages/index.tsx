@@ -9,11 +9,8 @@ import { CartProductDataType, Store } from "@/utils/Store";
 import { getError } from "@/utils/error";
 import axios from "axios";
 import ProductItem from "@/components/ProductItem";
-import MiniLoading from "@/components/MiniLoading";
 import { customToast } from "@/utils/customToast";
 import LoadingProductItem from "@/components/LoadingProductItem";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [introShowcaseCurrent, setIntroShowcaseCurrent] =
@@ -74,8 +71,8 @@ export default function Home() {
                   key={category}
                   className={
                     category === introShowcaseCurrent
-                      ? "bg-[var(--orange)] p-2 flex-1 text-center cursor-pointer text-[var(--white)] font-semibold"
-                      : "bg-[var(--black)] p-2 flex-1 text-center cursor-pointer text-[var(--white)]"
+                      ? "bg-[var(--orange)] p-2 flex-1 text-center cursor-pointer text-white font-semibold"
+                      : "bg-[var(--black)] p-2 flex-1 text-center cursor-pointer text-white"
                   }
                   onClick={() => {
                     setIntroShowcaseCurrent(category);
