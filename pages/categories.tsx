@@ -1,5 +1,4 @@
 import Layout from "@/components/Layout";
-import MiniLoading from "@/components/MiniLoading";
 import { getError } from "@/utils/error";
 import { Store } from "@/utils/Store";
 import axios from "axios";
@@ -15,14 +14,12 @@ export default function CategoriesScreen() {
     error: "",
   });
 
-  console.log(prod);
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
         // await new Promise((resolve) => setTimeout(resolve, 2000));
-        const { data } = await axios.get(`/api/products/categories`);
+        const { data } = await axios.get(`/api/categories`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL", payload: getError(error) });

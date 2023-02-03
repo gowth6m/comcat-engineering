@@ -46,7 +46,7 @@ export default function ProductScreen(props: any) {
       <div className="py-4 md:py-8 mb-4">
         <Link
           href="/"
-          className="bg-[var(--orange)] text-white font-bold py-3 px-8 rounded-lg hover:bg-[var(--black)] hover:text-[var(--orange)]"
+          className="bg-[var(--orange)] text-white font-bold py-3 px-8 rounded-lg hover:bg-[var(--darkerorange)] hover:text-text"
         >
           Back to products
         </Link>
