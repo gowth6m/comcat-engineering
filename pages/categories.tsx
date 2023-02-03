@@ -21,7 +21,7 @@ export default function CategoriesScreen() {
     const fetchProducts = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        // await new Promise((resolve) => setTimeout(resolve, 5000));
+        // await new Promise((resolve) => setTimeout(resolve, 2000));
         const { data } = await axios.get(`/api/products/categories`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
@@ -38,8 +38,15 @@ export default function CategoriesScreen() {
 
         <div>
           {loading ? (
-            <div className="my-10">
-              <MiniLoading />
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-4 w-full mb-4">
+              {Array.from({ length: 12 }).map((i: any, index: any) => {
+                return (
+                  <div
+                    key={index}
+                    className="text-black text-lg rounded-lg h-[4.4rem] md:h-24 bg-[var(--lightergrey)] animate-pulse"
+                  ></div>
+                );
+              })}
             </div>
           ) : error ? (
             <div>{error}</div>
@@ -52,7 +59,9 @@ export default function CategoriesScreen() {
                     href={"/category/" + category}
                     className="text-black text-lg orange-border rounded-lg hover:bg-[var(--orange)] hover:text-white"
                   >
-                    <div className="text-center px-4 py-4 md:py-8">{category}</div>
+                    <div className="text-center px-5 py-5 md:py-8">
+                      {category}
+                    </div>
                   </Link>
                 );
               })}
