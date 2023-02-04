@@ -13,7 +13,7 @@ export default function Layout({ title, children }: LayoutProps) {
   return (
     <>
       <Head>
-        <title>{title ? title + " - GCE" : "Great Comcat Engineering"}</title>
+        <title>{title ? title + " - Great Comcat Engineering" : "Great Comcat Engineering"}</title>
         <meta
           name="description"
           content="Great Comcat Engineering is a commercial machinery company based in London, UK - offering only the best to our customers."
