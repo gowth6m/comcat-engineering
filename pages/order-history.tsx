@@ -1,5 +1,4 @@
 import Loading from "@/components/Loading";
-import MiniLoading from "@/components/MiniLoading";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useReducer } from "react";

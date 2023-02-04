@@ -5,8 +5,6 @@ import { customToast } from "@/utils/customToast";
 import { getError } from "@/utils/error";
 import { CartProductDataType, Store } from "@/utils/Store";
 import axios from "axios";
-import { useSession } from "next-auth/react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useReducer, useState } from "react";
 

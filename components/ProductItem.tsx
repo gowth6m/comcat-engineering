@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import React from "react";
-import { IconAddCart, IconHeart, IconLoadingAnimation } from "./CustomIcons";
+import { IconAddCart, IconLoadingAnimation } from "./CustomIcons";
 import Image from "next/image";
 
 export type ProductItemProps = {
@@ -19,16 +18,7 @@ export default function ProductItem({
   return (
     <>
       {/* Mobile */}
-      <motion.div
-        className="overflow-hidden rounded-lg md:hidden"
-        transition={{
-          duration: 1,
-          delay: 0,
-        }}
-        initial="offscreen"
-        animate="onscreen"
-        variants={itemVariants}
-      >
+      <div className="overflow-hidden rounded-lg md:hidden">
         <div className="flex flex-row align-middle m-2">
           <Link
             href={"/product/" + product.slug}
@@ -72,19 +62,10 @@ export default function ProductItem({
             </button>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Desktop */}
-      <motion.div
-        className="overflow-hidden rounded-lg hidden md:flex h-58"
-        transition={{
-          duration: 1,
-          delay: 0,
-        }}
-        initial="offscreen"
-        animate="onscreen"
-        variants={itemVariants}
-      >
+      <div className="overflow-hidden rounded-lg hidden md:flex h-58">
         <div className="flex flex-col w-full h-full m-2">
           <Link
             href={"/product/" + product.slug}
@@ -129,21 +110,21 @@ export default function ProductItem({
             </button>
           </div>
         </div>
-      </motion.div>
+      </div>
     </>
   );
 }
 
-const itemVariants: Variants = {
-  offscreen: {
-    scale: 0,
-  },
-  onscreen: {
-    scale: 1,
-    transition: {
-      type: "spring",
-      bounce: 0.5,
-      duration: 1,
-    },
-  },
-};
+// const itemVariants: Variants = {
+//   offscreen: {
+//     scale: 0,
+//   },
+//   onscreen: {
+//     scale: 1,
+//     transition: {
+//       type: "spring",
+//       bounce: 0.5,
+//       duration: 1,
+//     },
+//   },
+// };

@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { Inter } from "@next/font/google";
 import { useContext, useEffect, useReducer, useState } from "react";
 import Layout from "@/components/Layout";
 import "@splidejs/react-splide/css";

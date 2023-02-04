@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import { IconPaypal } from "./CustomIcons";
 import GCELogo from "./GCELogo";
 import NocxaLogo from "./NocxaLogo";
 

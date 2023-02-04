@@ -10,7 +10,6 @@ import Layout from "@/components/Layout";
 import { Auth } from "@/utils/Auth";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-// import router from "next/router";
 import React from "react";
 
 export default function AccountScreen() {
