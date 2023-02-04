@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { useContext, useEffect, useReducer, useState } from "react";
 import Layout from "@/components/Layout";
 import "@splidejs/react-splide/css";
@@ -10,6 +9,7 @@ import axios from "axios";
 import ProductItem from "@/components/ProductItem";
 import { customToast } from "@/utils/customToast";
 import LoadingProductItem from "@/components/LoadingProductItem";
+import IntroSlidingAnimation from "@/components/IntroSlidingAnimation";
 
 export default function Home() {
   const [introShowcaseCurrent, setIntroShowcaseCurrent] =
@@ -107,6 +107,17 @@ export default function Home() {
                 </div>
               </>
             )}
+          </div>
+
+          {/* Sliding Animation */}
+
+          <div className="my-4 bg-[lightgrey] rounded-lg text-xl md:text-2xl">
+            <div className="my-4">
+              <div className="text-[var(--black)] font-bold text-center py-4">
+                Trusted by 100s of brands and outlets
+              </div>
+              <IntroSlidingAnimation />
+            </div>
           </div>
         </div>
       </Layout>

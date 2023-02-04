@@ -16,7 +16,7 @@ export default function Layout({ title, children }: LayoutProps) {
         <title>{title ? title + " - Great Comcat Engineering" : "Great Comcat Engineering"}</title>
         <meta
           name="description"
-          content="Great Comcat Engineering is a commercial machinery company based in London, UK - offering only the best to our customers."
+          content="Great Comcat Engineering is a premier machinery supplier and repair service based in London, UK, offering top-notch services and the best quality machinery through certified engineers. Our goal is to meet and exceed client expectations with a commitment to quality and excellence in service."
         />
         <meta
           name="keywords"
@@ -28,7 +28,7 @@ export default function Layout({ title, children }: LayoutProps) {
         ></meta>
         <meta
           property="og:description"
-          content="Great Comcat Engineering is a commercial machinery company based in London, UK - offering only the best to our customers."
+          content="Great Comcat Engineering is a premier machinery supplier and repair service based in London, UK, offering top-notch services and the best quality machinery through certified engineers. Our goal is to meet and exceed client expectations with a commitment to quality and excellence in service."
         ></meta>
         <meta
           property="og:url"
@@ -43,7 +43,7 @@ export default function Layout({ title, children }: LayoutProps) {
           name="apple-mobile-web-app-title"
           content="Great Comcat Engineering"
         ></meta>
-        <link rel="apple-touch-icon" href="/logo/logo.svg"></link>
+        <link rel="apple-touch-icon" href="/logo/logo.png"></link>
         <link rel="icon" href="/logo/logo_circle.svg" />
       </Head>
 
