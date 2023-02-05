@@ -143,7 +143,7 @@ export default function AdminOrderScreen() {
                   </div>
 
                   <div className="overflow-x-auto flex-auto w-full hidden md:block md:mx-2">
-                    <div className="w-[98%] bg-[var(--black)] mb-4 mx-auto flex flex-row rounded-lg">
+                    <div className="w-[98%] bg-[var(--black)] mb-4 mx-auto flex flex-row rounded-lg py-2">
                       <div className="flex flex-row text-white align-middle justify-center gap-2 ml-auto mr-4">
                         <div className="font-semibold my-[0.5rem]">
                           Not Delivered

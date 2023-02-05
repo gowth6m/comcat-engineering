@@ -168,7 +168,7 @@ function AdminUsersScreen() {
                   </div>
 
                   <div className="overflow-x-auto flex-auto w-full hidden md:block md:mx-2">
-                    <div className="w-[98%] bg-[var(--black)] mb-4 mx-auto flex flex-row rounded-lg">
+                    <div className="w-[98%] bg-[var(--black)] mb-4 mx-auto flex flex-row rounded-lg py-2">
                       {/* <button className="pri-button ml-4 my-2 cursor-pointer">
                         Create
                       </button> */}
@@ -180,7 +180,7 @@ function AdminUsersScreen() {
                           type="search"
                           onChange={(e) => setSearchQuery(e.target.value)}
                           placeholder="Search for users"
-                          className="ml-auto rounded-lg text-center orange-border w-2/6 my-1 py-1"
+                          className="ml-auto rounded-lg text-center orange-border w-2/6 "
                         />
 
                         <button

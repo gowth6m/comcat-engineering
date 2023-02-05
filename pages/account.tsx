@@ -19,7 +19,7 @@ export default function AccountScreen() {
     <Auth>
       <Layout title="My Account">
         <div className="md:mt-4 mt-2 md:w-5/6 mx-auto mb-4">
-          <div className="text-2xl text-white rounded-lg p-2 text-center bg-[var(--black)]">
+          <div className="text-2xl text-white rounded-lg p-2 text-center bg-[var(--black)] md:bg-transparent md:text-[var(--orange)] md:border-2 md:border-[var(--orange)]">
             <span className=""> {session?.user.name}</span>
           </div>
 
