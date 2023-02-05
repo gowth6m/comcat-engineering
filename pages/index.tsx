@@ -111,9 +111,9 @@ export default function Home() {
 
           {/* Sliding Animation */}
 
-          <div className="my-4 bg-[lightgrey] rounded-lg text-xl md:text-2xl">
-            <div className="my-4">
-              <div className="text-[var(--black)] font-bold text-center py-4">
+          <div className="my-4 bg-[lightgrey] rounded-lg text-lg md:text-2xl">
+            <div className="my-2 pb-2">
+              <div className="text-[var(--black)] font-semibold text-center py-4">
                 Trusted by 100s of brands and outlets
               </div>
               <IntroSlidingAnimation />

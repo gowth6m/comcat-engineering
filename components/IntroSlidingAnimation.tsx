@@ -10,18 +10,23 @@ export default function IntroSlidingAnimation() {
   return (
     <Splide
       options={{
-        height: Number(width) > 768 ? "10rem" : "8rem",
+        height:
+          Number(width) > 1024
+            ? "10rem"
+            : Number(width) > 768
+            ? "6rem"
+            : "4rem",
         type: "loop",
         gap: "2px",
         drag: "free",
         arrows: false,
         pagination: false,
-        perPage: Number(width) > 768 ? 5 : 3,
+        perPage: Number(width) > 1024 ? 6 : Number(width) > 768 ? 4 : 4,
         autoScroll: {
           pauseOnHover: false,
           pauseOnFocus: false,
           rewind: false,
-          speed: 0.5,
+          speed: 1,
         },
       }}
       extensions={{ AutoScroll }}

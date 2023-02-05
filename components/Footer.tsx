@@ -5,7 +5,7 @@ import NocxaLogo from "./NocxaLogo";
 
 export default function Footer() {
   return (
-    <div className="container w-full grid grid-cols-1 gap-4 md:grid-cols-3 text-white mb-14 mt-8">
+    <div className="container w-full grid grid-cols-1 gap-4 md:grid-cols-3 text-white mb-14 mt-8 px-4">
       {/* Logo & Copyright */}
       <div className="w-full h-auto flex flex-col items-center justify-center my-4">
         <div className="h-full my-[-10px] mt-[-25px]">
@@ -21,7 +21,7 @@ export default function Footer() {
       </div>
 
       {/* Middle Links */}
-      <div className="w-full h-auto grid grid-cols-2 gap-4 md:grid-cols-3 my-4 text-center items-center">
+      <div className="w-full h-auto grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3 my-4 text-center items-center">
         <Link href="/" className="hidden md:block hover:text-[var(--orange)]">
           Home
         </Link>
