@@ -82,7 +82,7 @@ export default function ProductItem({
 
           <div className="flex flex-col items-center justify-center text-white rounded-lg overflow-hidden gap-2">
             <Link
-              className="rounded-lg bg-[var(--black)] w-full pl-2 h-10 py-[7px] text-ellipsis overflow-hidden"
+              className="rounded-lg bg-[var(--black)] w-full pl-2 h-10 py-[7px] text-ellipsis overflow-hidden leading-7"
               href={"/product/" + product.slug}
             >
               {product.name.slice(0, 20) +
