@@ -99,6 +99,7 @@ export default function ProductScreen() {
               width={640}
               height={640}
               layout="responsive"
+              priority={true}
             ></Image>
           </div>
           {/* List on the right of image */}

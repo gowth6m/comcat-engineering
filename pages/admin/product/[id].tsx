@@ -115,7 +115,7 @@ export default function AdminProductEditScreen() {
     countInStock,
     description,
   }: any) => {
-    category = category.split(",");
+    category = category.toString().split(",");
 
     try {
       dispatch({ type: "UPDATE_REQUEST" });
