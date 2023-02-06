@@ -10,8 +10,10 @@ import ProductItem from "@/components/ProductItem";
 import { customToast } from "@/utils/customToast";
 import LoadingProductItem from "@/components/LoadingProductItem";
 import IntroSlidingAnimation from "@/components/IntroSlidingAnimation";
+import useWindowDimensions from "@/utils/window";
 
 export default function Home() {
+  const { width } = useWindowDimensions() ?? { width: 0 };
   const [introShowcaseCurrent, setIntroShowcaseCurrent] =
     React.useState("Best Sellers");
   const introShowcaseCategory = ["Best Sellers", "New Arrivals", "Clearance"];
@@ -55,6 +57,15 @@ export default function Home() {
     // await new Promise((resolve) => setTimeout(resolve, 10000));
     setAddingItem("");
   };
+
+  // // Limiting data depending on screen size
+  if (width! < 768) {
+    prod.splice(5);
+  } else if (width! < 1024) {
+    prod.splice(12);
+  } else {
+    prod;
+  }
 
   return (
     <>

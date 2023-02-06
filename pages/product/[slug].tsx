@@ -69,18 +69,31 @@ export default function ProductScreen() {
       </div>
       {loading ? (
         <div className="flex items-center justify-center">
-          <Loading />
+          {/* <Loading /> */}
+
+          <div className="grid md:grid-cols-4 md:gap-3 mb-8 w-full">
+            {/* Image */}
+            <div className="md:col-span-1 rounded-lg h-[21.5rem] w-full bg-[var(--lightergrey)]"></div>
+            {/* List on the right of image */}
+            <div className="text-black flex flex-col my-4 md:my-0 space-y-2 md:mx-4 mx-2 felx-auto md:col-span-2">
+              <div className="w-full h-12 bg-[var(--lightergrey)] rounded-lg"></div>
+              <div className="w-full h-12 bg-[var(--lightergrey)] rounded-lg"></div>
+              <div className="w-full h-[14.5rem] bg-[var(--lightergrey)] rounded-lg"></div>
+            </div>
+            {/* Below the right text */}
+            <div className="text-white rounded-lg md:col-span-1 h-[21.5rem] w-full bg-[var(--lightergrey)]"></div>
+          </div>
         </div>
       ) : error ? (
         <div className="flex items-center justify-center">
           <div className="text-4xl text-[var(--orange)]">{error}</div>
         </div>
       ) : (
-        <div className="grid md:grid-cols-3 md:gap-3 mb-8">
+        <div className="grid md:grid-cols-4 md:gap-3 mb-8">
           {/* Image */}
           <div className="md:col-span-1 rounded-lg">
             <Image
-              className="rounded-lg black-border"
+              className="rounded-lg"
               src={prod.image}
               alt={prod.name}
               width={640}
@@ -89,7 +102,7 @@ export default function ProductScreen() {
             ></Image>
           </div>
           {/* List on the right of image */}
-          <div className="text-black flex flex-col my-4 md:my-0 space-y-2 md:mx-4 mx-2">
+          <div className="text-black flex flex-col my-4 md:my-0 space-y-2 md:mx-4 mx-2 felx-auto md:col-span-2">
             <div className="text-xl font-semibold">{prod.name}</div>
             <div className="text-lg">
               <RatingDisplay rating={prod.rating} />
@@ -107,8 +120,8 @@ export default function ProductScreen() {
             </div>
           </div>
           {/* Below the right text */}
-          <div className="text-white">
-            <div className="card p-5 bg-[var(--black)] rounded-lg">
+          <div className="text-white md:col-span-1">
+            <div className="p-5 bg-[var(--black)] rounded-lg">
               <div className="mb-2 flex justify-between">
                 <div>Price</div>
                 <div>£{prod.price}</div>
@@ -140,19 +153,3 @@ function reducer(state: any, action: any) {
       return state;
   }
 }
-
-// to fetch from database
-// export async function getServerSideProps(context: any) {
-//   const { params } = context;
-//   const { slug } = params;
-
-//   await db.connect();
-//   const product = await Product.findOne({ slug }).lean();
-//   await db.disconnect();
-
-//   return {
-//     props: {
-//       product: product ? db.convertDocToObj(product) : null,
-//     },
-//   };
-// }

@@ -35,7 +35,7 @@ export default function CategoriesScreen() {
 
         <div>
           {loading ? (
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-4 w-full mb-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 w-full mb-4">
               {Array.from({ length: 12 }).map((i: any, index: any) => {
                 return (
                   <div
@@ -48,7 +48,7 @@ export default function CategoriesScreen() {
           ) : error ? (
             <div>{error}</div>
           ) : (
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-4 w-full mb-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 w-full mb-4">
               {prod.map((category: any) => {
                 return (
                   <Link

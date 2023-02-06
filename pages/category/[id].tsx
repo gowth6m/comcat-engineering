@@ -57,7 +57,9 @@ export default function CategoryScreen(props: any) {
   return (
     <Layout title={category?.toString()}>
       <div className="w-full h-auto mt-4 rounded-lg">
-        <div className="heading1">{category}</div>
+        <div className="flex flex-row gap-x-2">
+          <div className="heading1">{category}</div>
+        </div>
         {loading ? (
           <div className="grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-6 w-full mb-4">
             {Array.from({ length: 12 }).map((i: any, index: any) => {
