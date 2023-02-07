@@ -146,9 +146,9 @@ export default function Home() {
           </div>
 
           {/* Featured Products */}
-          {/* <div className="my-4 bg-[lightgrey] rounded-lg text-lg md:text-2xl">
+          <div className="my-4 bg-[lightgrey] rounded-lg text-lg md:text-2xl">
             <div className="flex flex-row"></div>
-          </div> */}
+          </div>
         </div>
       </Layout>
     </>
