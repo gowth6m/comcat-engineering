@@ -15,11 +15,16 @@ import useWindowDimensions from "@/utils/window";
 export default function Home() {
   const { width } = useWindowDimensions() ?? { width: 0 };
   const [introShowcaseCurrent, setIntroShowcaseCurrent] =
-    React.useState("Best Sellers");
-  const introShowcaseCategory = ["Best Sellers", "New Arrivals", "Clearance"];
+    React.useState("bestSellers");
+  const introShowcaseCategory = ["bestSellers", "newArrivals", "clearance"];
+  const introShowcaseCategoryMap: any = {
+    bestSellers: "Best Sellers",
+    newArrivals: "New Arrivals",
+    clearance: "Clearance",
+  };
   const { state, dispatchStore } = useContext(Store);
   const { cart } = state;
-  const [{ loading, error, prod }, dispatch] = useReducer(reducer, {
+  const [{ loading, error, prod }, dispatch]: any = useReducer(reducer, {
     loading: true,
     prod: [],
     error: "",
@@ -31,7 +36,7 @@ export default function Home() {
       try {
         dispatch({ type: "FETCH_REQUEST" });
         // await new Promise((resolve) => setTimeout(resolve, 5000));
-        const { data } = await axios.get(`/api/products/all`);
+        const { data }: any = await axios.get(`/api/products/all`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL", payload: getError(error) });
@@ -47,7 +52,7 @@ export default function Home() {
       (x: CartProductDataType) => x.slug === product.slug
     );
     const qty = existItem ? existItem.qty + 1 : 1;
-    const { data } = await axios.get(`/api/products/${product._id}`);
+    const { data }: any = await axios.get(`/api/products/${product._id}`);
     if (qty > data.countInStock) {
       customToast("Sorry. Product is out of stock");
       setAddingItem("");
@@ -58,13 +63,20 @@ export default function Home() {
     setAddingItem("");
   };
 
-  // // Limiting data depending on screen size
-  if (width! < 768) {
-    prod.splice(5);
-  } else if (width! < 1024) {
-    prod.splice(12);
-  } else {
-    prod;
+  try {
+    // Limiting data depending on screen size
+    if (width! < 768) {
+      prod[introShowcaseCurrent].splice(5);
+      prod["products"].splice(5);
+    } else if (width! < 1024) {
+      prod[introShowcaseCurrent].splice(12);
+      prod["products"].splice(12);
+    } else {
+      prod[introShowcaseCurrent];
+      prod["products"];
+    }
+  } catch (error) {
+    console.log(error);
   }
 
   return (
@@ -88,7 +100,7 @@ export default function Home() {
                     setIntroShowcaseCurrent(category);
                   }}
                 >
-                  {category}
+                  {introShowcaseCategoryMap[category]}
                 </div>
               );
             })}
@@ -105,23 +117,25 @@ export default function Home() {
             ) : (
               <>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-6 w-full mb-4">
-                  {prod.map((product: any) => {
-                    return (
-                      <ProductItem
-                        key={product.slug}
-                        product={product}
-                        addToCartHandler={addToCartHandler}
-                        currentAddingItem={addingItem}
-                      />
-                    );
-                  })}
+                  {(prod[introShowcaseCurrent] ?? prod["products"]).map(
+                    (product: any) => {
+                      console.log(introShowcaseCurrent);
+                      return (
+                        <ProductItem
+                          key={product.slug}
+                          product={product}
+                          addToCartHandler={addToCartHandler}
+                          currentAddingItem={addingItem}
+                        />
+                      );
+                    }
+                  )}
                 </div>
               </>
             )}
           </div>
 
           {/* Sliding Animation */}
-
           <div className="my-4 bg-[lightgrey] rounded-lg text-lg md:text-2xl">
             <div className="my-2 pb-2">
               <div className="text-[var(--black)] font-semibold text-center py-4">
@@ -130,6 +144,11 @@ export default function Home() {
               <IntroSlidingAnimation />
             </div>
           </div>
+
+          {/* Featured Products */}
+          {/* <div className="my-4 bg-[lightgrey] rounded-lg text-lg md:text-2xl">
+            <div className="flex flex-row"></div>
+          </div> */}
         </div>
       </Layout>
     </>

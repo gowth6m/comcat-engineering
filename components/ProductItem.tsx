@@ -35,7 +35,7 @@ export default function ProductItem({
 
           <div className="flex flex-col w-full justify-between text-white">
             <Link
-              className="bg-[var(--black)] w-full h-11 rounded-lg mx-auto pl-2 py-[8px] overflow-hidden"
+              className="bg-[var(--black)] w-full h-11 rounded-lg mx-auto pl-2 py-[8px] overflow-hidden leading-7"
               href={"/product/" + product.slug}
             >
               {product.name}

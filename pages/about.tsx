@@ -42,14 +42,10 @@ export default function AboutScreen() {
             </div>
 
             <div>
-              We believe in providing top-notch customer service and that&#39;s
-              why we are dedicated to ensuring that every customer is completely
-              satisfied with their experience. Our team is always happy to
-              answer any questions you may have and help you find the right
-              equipment for your business. So, if you&#39;re looking for
-              top-quality machinery, expert repairs, and excellent customer
-              service, then look no further than our shop. Contact us today to
-              learn more about what we can offer you!
+              We strive for excellent customer service and satisfaction. Our
+              team is ready to assist with any questions and finding the right
+              equipment. Choose us for top-quality machinery, expert repairs,
+              and superior customer service. Contact us today to learn more.
             </div>
 
             <Image
@@ -58,6 +54,7 @@ export default function AboutScreen() {
               alt="about-img"
               width={1000}
               height={665}
+              priority={true}
             ></Image>
           </div>
         </div>
