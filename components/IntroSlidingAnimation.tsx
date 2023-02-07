@@ -26,7 +26,7 @@ export default function IntroSlidingAnimation() {
           pauseOnHover: false,
           pauseOnFocus: false,
           rewind: false,
-          speed: 1,
+          speed: Number(width) > 1024 ? 1 : Number(width) > 768 ? 1 : 0.5,
         },
       }}
       extensions={{ AutoScroll }}
