@@ -11,6 +11,8 @@ import { customToast } from "@/utils/customToast";
 import LoadingProductItem from "@/components/LoadingProductItem";
 import IntroSlidingAnimation from "@/components/IntroSlidingAnimation";
 import useWindowDimensions from "@/utils/window";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const { width } = useWindowDimensions() ?? { width: 0 };
@@ -146,9 +148,17 @@ export default function Home() {
           </div>
 
           {/* Featured Products */}
-          <div className="my-4 bg-[lightgrey] rounded-lg text-lg md:text-2xl">
-            <div className="flex flex-row"></div>
-          </div>
+          <Link href={"/search"} className="overflow-hidden">
+            <Image
+              className="my-5 rounded-lg object-fit w-full h-auto object-center cursor-pointer hover:opacity-80"
+              src="/assets/viewall.svg"
+              alt={"view all"}
+              width={640}
+              height={640}
+              layout="responsive"
+              priority={true}
+            ></Image>
+          </Link>
         </div>
       </Layout>
     </>
