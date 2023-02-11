@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import GCELogo from "./GCELogo";
-import NocxaLogo from "./NocxaLogo";
+import { NocxaLogo } from "./NocxaLogo";
 
 export default function Footer() {
   return (
